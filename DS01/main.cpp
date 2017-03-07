@@ -19,7 +19,7 @@ void inc_3(int &g, int &h) // Call by Reference
 {
     g++; h++;
     printf("inc_3 : a - %d b - %d\n", g, h);
-    printf("inc_3 : g - %f h - %f\n", &g, &h);
+    printf("inc_3 : g - %p h - %p\n", &g, &h);
 }
 
 
@@ -33,7 +33,7 @@ int main()
     inc_2(&a, &b);
     printf("main : a - %d b - %d\n", a, b);
     inc_3(a, b);
-    printf("main : a - %f b - %f\n", &a, &b);
+    printf("main : a - %p b - %p\n", &a, &b);
     printf("main : a - %d b - %d\n", a, b);
 
 #ifdef _WIN32
