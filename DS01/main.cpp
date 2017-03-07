@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #ifdef _WIN32
 #include <cstdlib>
 #endif
