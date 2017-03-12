@@ -1,26 +1,27 @@
 #include <iostream>
-#include <stdio.h>
 #ifdef _WIN32
 #include <cstdlib>
 #endif
 
+using namespace std;
+
 void inc_1(int c, int d) // Call by Value
 {
     c++; d++;
-    printf("inc_1 : a - %d b - %d\n", c, d);
+    cout << "inc_1 : a = " << c << ", b = " << d << "\n";
 }
 
 void inc_2(int *e, int *f) // Call by Pointer
 {
     (*e)++; (*f)++;
-    printf("inc_2 : a - %d b - %d\n", *e, *f);
+    cout << "inc_2 : a = " << *e << ", b = " << *f << "\n";
 }
 
 void inc_3(int &g, int &h) // Call by Reference
 {
     g++; h++;
-    printf("inc_3 : a - %d b - %d\n", g, h);
-    printf("inc_3 : g - %p h - %p\n", &g, &h);
+    cout << "inc_3 : &g = " << &g << ", &h = " << &h << "\n";
+    cout << "inc_3 : a = " << g << ", b = " << h << "\n";
 }
 
 
@@ -30,15 +31,17 @@ int main()
     int a = 5, b = 10;
 
     inc_1(a, b);
-    printf("main : a - %d b - %d\n", a, b);
+    cout << "main after inc_1 : a = " << a << ", b = " << b << "\n";
     inc_2(&a, &b);
-    printf("main : a - %d b - %d\n", a, b);
-    inc_3(a, b);
-    printf("main : a - %p b - %p\n", &a, &b);
-    printf("main : a - %d b - %d\n", a, b);
+    cout << "main after inc_2 : a = " << a << ", b = " << b << "\n";
 
+    cout << "main : &a = " << &a << ", &b = " << &b << "\n";
+    inc_3(a, b);
+    cout << "main after inc_3  : a = " << a << ", b = " << b << "\n";
+    /*
 #ifdef _WIN32
     system("pause");
 #endif
+     */
     return 0;
 }
