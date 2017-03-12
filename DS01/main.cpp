@@ -1,7 +1,4 @@
 #include <iostream>
-#ifdef _WIN32
-#include <cstdlib>
-#endif
 
 using namespace std;
 
@@ -38,10 +35,6 @@ int main()
     cout << "main : &a = " << &a << ", &b = " << &b << "\n";
     inc_3(a, b);
     cout << "main after inc_3  : a = " << a << ", b = " << b << "\n";
-    /*
-#ifdef _WIN32
-    system("pause");
-#endif
-     */
+    cin.get();
     return 0;
 }
