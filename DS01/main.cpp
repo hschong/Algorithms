@@ -35,6 +35,7 @@ int main()
     cout << "main : &a = " << &a << ", &b = " << &b << "\n";
     inc_3(a, b);
     cout << "main after inc_3  : a = " << a << ", b = " << b << "\n";
+    cout << "Fucking bitch!";
     cin.get();
     return 0;
 }
