@@ -2,6 +2,14 @@
 
 using namespace std;
 
+#define RECURRSION
+
+#ifdef RECURRSION
+const int Len = 66;
+const int Divs = 6;
+void subdivide(char ar[], int low, int high, int level);
+#endif
+
 struct structRegister
 {
     int sn : 4;
@@ -31,6 +39,21 @@ void inc_3(int &g, int &h) // Call by Reference
 
 int main() 
 {
+#ifdef RECURRSION
+    int index;
+    int max = Len - 2;
+    int min = 0;
+    char ruler[Len];
+
+    ruler[Len - 1] = '\0';
+    ruler[min] = ruler[max] = '|';
+    for (index = 1; index < max; index++)
+        ruler[index] = ' ';
+    
+    cout << ruler << endl;
+    cin.get();
+
+#else
     structRegister regA;
     int a = 5, b = 10;
 
@@ -46,5 +69,18 @@ int main()
     cout << sizeof(regA) << ", " << sizeof(int) << endl;
 
     cin.get();
+#endif
+    
     return 0;
+}
+
+void subdivide(char ar[], int low, int high, int level)
+{
+    if (level == 0)
+        return;
+
+    int mid = (high + low) / 2;
+    ar[mid] = '|';
+    subdivide(ar, low, mid, level - 1);
+    subdivide(ar, mid, high, level - 1);
 }
