@@ -8,8 +8,7 @@ using namespace std;
 const int Len = 66;
 const int Divs = 6;
 void subdivide(char ar[], int low, int high, int level);
-#endif
-
+#else
 struct structRegister
 {
     int sn : 4;
@@ -17,6 +16,7 @@ struct structRegister
     bool goodIn : 1;
     bool goodTorgle : 1;
 };
+#endif
 
 void inc_1(int c, int d) // Call by Value
 {
@@ -47,11 +47,19 @@ int main()
 
     ruler[Len - 1] = '\0';
     ruler[min] = ruler[max] = '|';
-    for (index = 1; index < max; index++)
+
+    for (index = 1; index < max; index++)   // initialize to blank ruler
         ruler[index] = ' ';
-    
     cout << ruler << endl;
-    cin.get();
+
+    for (index = 1; index <= Divs; index++)
+    {
+        subdivide(ruler, min, max, index);
+        cout << ruler << endl;
+
+        for (int i=1; i<max; i++)   // reset to blank ruler
+            ruler[i] = ' ';
+    }
 
 #else
     structRegister regA;
