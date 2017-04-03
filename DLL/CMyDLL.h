@@ -26,7 +26,7 @@ public:
     virtual ~CMyDLL();
 
     bool isEmpty();
-    bool printData(Node *pNode);
+    bool printData(const Node *pNode);
     bool printAll();
 
     Node* search(const string data);

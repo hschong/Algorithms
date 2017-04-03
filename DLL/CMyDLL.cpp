@@ -187,7 +187,7 @@ bool CMyDLL::removeNode(const string data)
     return true;
 }
 
-bool CMyDLL::printData(Node *pNode)
+bool CMyDLL::printData(const Node *pNode)
 {
     if (pNode == NULL)
         return false;
