@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Projects/Study-Algorithm/DLL/CMyDLL.cpp
+CMyDLL.h
+C:/Projects/Study-Algorithm/DLL/CMyDLL.h
+iostream
+-
+
+C:/Projects/Study-Algorithm/DLL/CMyDLL.h
+string
+-
+
+C:/Projects/Study-Algorithm/DLL/main.cpp
+iostream
+-
+CMyDLL.h
+C:/Projects/Study-Algorithm/DLL/CMyDLL.h
+
