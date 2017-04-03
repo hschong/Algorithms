@@ -161,7 +161,10 @@ bool CMySLL::removeNode()
         return false;
 
     Node *pNode = findPrevNode(pTail);
-    setTail(pNode);
+    if (pNode != NULL)
+    {
+	    setTail(pNode);
+    }
 
     cout << "remove a node from tail = " << pTail->data << endl;
     delete pTail;

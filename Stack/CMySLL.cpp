@@ -1,44 +1,46 @@
 //
-// Created by heese on 2017-04-03.
+// Created by heeseok.chong on 2017-04-02.
 //
 
-#include "CMyDLL.h"
+#include "CMySLL.h"
 #include <iostream>
 
-CMyDLL::CMyDLL() {
+using namespace std;
+
+CMySLL::CMySLL() {
     m_pHead = NULL;
     m_pTail = NULL;
 }
 
-CMyDLL::~CMyDLL() {
+CMySLL::~CMySLL() {
 
 }
 
-Node *CMyDLL::getHead() const {
+Node *CMySLL::getHead() const {
     return m_pHead;
 }
 
-void CMyDLL::setHead(Node *pNode) {
-    CMyDLL::m_pHead = pNode;
+void CMySLL::setHead(Node *pNode) {
+    CMySLL::m_pHead = pNode;
 }
 
-Node *CMyDLL::getTail() const {
+Node *CMySLL::getTail() const {
     return m_pTail;
 }
 
-void CMyDLL::setTail(Node *pNode) {
+void CMySLL::setTail(Node *pNode) {
     pNode->pNext = NULL;
-    CMyDLL::m_pTail = pNode;
+    CMySLL::m_pTail = pNode;
 }
 
-bool CMyDLL::isEmpty() {
-    if (CMyDLL::m_pHead == NULL)
+bool CMySLL::isEmpty() {
+    if (CMySLL::m_pHead == NULL)
         return true;
     else
         return false;
 }
 
-Node* CMyDLL::createNode(const string data)
+Node* CMySLL::createNode(const string data)
 {
     Node *pNode = new Node;
     if (pNode == NULL)
@@ -52,13 +54,12 @@ Node* CMyDLL::createNode(const string data)
 
     pNode->data = data;
     pNode->pNext = NULL;
-    pNode->pPrev = NULL;
 
     cout << "created a node = " << pNode->data << endl;
     return pNode;
 }
 
-bool CMyDLL::appendNode(const string data)  // add a node after tail.
+bool CMySLL::appendNode(const string data)
 {
     Node *pNode = createNode(data);
     if (pNode == NULL)
@@ -68,7 +69,6 @@ bool CMyDLL::appendNode(const string data)  // add a node after tail.
     {
         Node *pTail = getTail();
         pTail->pNext = pNode;
-        pNode->pPrev = pTail;
         setTail(pNode);
     }
 
@@ -76,7 +76,7 @@ bool CMyDLL::appendNode(const string data)  // add a node after tail.
     return true;
 }
 
-bool CMyDLL::insertNode(const string data, const unsigned int order)    // order's minimum is 1.
+bool CMySLL::insertNode(const string data, const unsigned int order)    // order's minimum is 1.
 {
     Node *pNode = getHead();
     Node *pNewNode = NULL;
@@ -95,8 +95,6 @@ bool CMyDLL::insertNode(const string data, const unsigned int order)    // order
 
     pNewNode->pNext = pNode->pNext;
     pNode->pNext = pNewNode;
-    pNewNode->pPrev = pNode;
-    pNode->pNext->pPrev = pNewNode;
 
     if (pNode == getTail())
     {
@@ -107,7 +105,7 @@ bool CMyDLL::insertNode(const string data, const unsigned int order)    // order
     return true;
 }
 
-bool CMyDLL::insertNode(const string data, const string targetData)
+bool CMySLL::insertNode(const string data, const string targetData)
 {
     Node *pNewNode = createNode(data);
     Node *pNode = search(targetData);
@@ -117,8 +115,6 @@ bool CMyDLL::insertNode(const string data, const string targetData)
 
     pNewNode->pNext = pNode->pNext;
     pNode->pNext = pNewNode;
-    pNewNode->pPrev = pNode;
-    pNewNode->pNext->pPrev = pNewNode;
 
     if (pNode == getTail())
     {
@@ -129,7 +125,7 @@ bool CMyDLL::insertNode(const string data, const string targetData)
     return true;
 }
 
-Node* CMyDLL::search(const string data)
+Node* CMySLL::search(const string data)
 {
     Node *pNode = getHead();
     if (pNode == NULL)
@@ -143,16 +139,33 @@ Node* CMyDLL::search(const string data)
     return pNode;
 }
 
-bool CMyDLL::removeNode()
+Node* CMySLL::findPrevNode(const Node *pTargetNode) // pTargetNode should not be a pointer indicating head
+{
+    if (pTargetNode == NULL)
+        return NULL;
+
+    Node *pNode = getHead();
+    if (pNode == pTargetNode)
+        return NULL;
+
+    while (pNode->pNext != pTargetNode)
+    {
+        pNode = pNode->pNext;
+    }
+
+    return pNode;
+}
+
+bool CMySLL::removeNode()
 {
     Node *pTail = getTail();
     if (pTail == NULL)
         return false;
 
-    Node *pNode = pTail->pPrev;
+    Node *pNode = findPrevNode(pTail);
     if (pNode != NULL)
     {
-	    setTail(pNode);
+        setTail(pNode);
     }
 
     cout << "remove a node from tail = " << pTail->data << endl;
@@ -161,7 +174,7 @@ bool CMyDLL::removeNode()
     return true;
 }
 
-bool CMyDLL::removeNode(const string data)
+bool CMySLL::removeNode(const string data)
 {
     Node *pHead = getHead();
     Node* pNode = search(data);
@@ -181,16 +194,15 @@ bool CMyDLL::removeNode(const string data)
     }
     else
     {
-        Node *pPrevNode = pNode->pPrev;
+        Node *pPrevNode = findPrevNode(pNode);
         pPrevNode->pNext = pNode->pNext;
-        pNode->pNext->pPrev = pPrevNode;
         delete pNode;
     }
 
     return true;
 }
 
-bool CMyDLL::printData(const Node *pNode)
+bool CMySLL::printData(Node *pNode)
 {
     if (pNode == NULL)
         return false;
@@ -200,7 +212,7 @@ bool CMyDLL::printData(const Node *pNode)
     return true;
 }
 
-bool CMyDLL::printAll()
+bool CMySLL::printAll()
 {
     Node *pNode = getHead();
     if (pNode == NULL)
