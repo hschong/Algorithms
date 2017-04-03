@@ -80,19 +80,71 @@ CMakeFiles/RandomBinaryTree.dir/main.cpp.obj.provides: CMakeFiles/RandomBinaryTr
 CMakeFiles/RandomBinaryTree.dir/main.cpp.obj.provides.build: CMakeFiles/RandomBinaryTree.dir/main.cpp.obj
 
 
+CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj: CMakeFiles/RandomBinaryTree.dir/flags.make
+CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj: ../CLinkedQueue.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Projects\Study-Algorithm\RandomBinaryTree\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj"
+	C:\MinGW\bin\g++.exe   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\RandomBinaryTree.dir\CLinkedQueue.cpp.obj -c C:\Projects\Study-Algorithm\RandomBinaryTree\CLinkedQueue.cpp
+
+CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.i"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Projects\Study-Algorithm\RandomBinaryTree\CLinkedQueue.cpp > CMakeFiles\RandomBinaryTree.dir\CLinkedQueue.cpp.i
+
+CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.s"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Projects\Study-Algorithm\RandomBinaryTree\CLinkedQueue.cpp -o CMakeFiles\RandomBinaryTree.dir\CLinkedQueue.cpp.s
+
+CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj.requires:
+
+.PHONY : CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj.requires
+
+CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj.provides: CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\RandomBinaryTree.dir\build.make CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj.provides.build
+.PHONY : CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj.provides
+
+CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj.provides.build: CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj
+
+
+CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj: CMakeFiles/RandomBinaryTree.dir/flags.make
+CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj: ../CMySLL.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Projects\Study-Algorithm\RandomBinaryTree\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj"
+	C:\MinGW\bin\g++.exe   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\RandomBinaryTree.dir\CMySLL.cpp.obj -c C:\Projects\Study-Algorithm\RandomBinaryTree\CMySLL.cpp
+
+CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.i"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Projects\Study-Algorithm\RandomBinaryTree\CMySLL.cpp > CMakeFiles\RandomBinaryTree.dir\CMySLL.cpp.i
+
+CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.s"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Projects\Study-Algorithm\RandomBinaryTree\CMySLL.cpp -o CMakeFiles\RandomBinaryTree.dir\CMySLL.cpp.s
+
+CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj.requires:
+
+.PHONY : CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj.requires
+
+CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj.provides: CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\RandomBinaryTree.dir\build.make CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj.provides.build
+.PHONY : CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj.provides
+
+CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj.provides.build: CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj
+
+
 # Object files for target RandomBinaryTree
 RandomBinaryTree_OBJECTS = \
-"CMakeFiles/RandomBinaryTree.dir/main.cpp.obj"
+"CMakeFiles/RandomBinaryTree.dir/main.cpp.obj" \
+"CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj" \
+"CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj"
 
 # External object files for target RandomBinaryTree
 RandomBinaryTree_EXTERNAL_OBJECTS =
 
 RandomBinaryTree.exe: CMakeFiles/RandomBinaryTree.dir/main.cpp.obj
+RandomBinaryTree.exe: CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj
+RandomBinaryTree.exe: CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj
 RandomBinaryTree.exe: CMakeFiles/RandomBinaryTree.dir/build.make
 RandomBinaryTree.exe: CMakeFiles/RandomBinaryTree.dir/linklibs.rsp
 RandomBinaryTree.exe: CMakeFiles/RandomBinaryTree.dir/objects1.rsp
 RandomBinaryTree.exe: CMakeFiles/RandomBinaryTree.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Projects\Study-Algorithm\RandomBinaryTree\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable RandomBinaryTree.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Projects\Study-Algorithm\RandomBinaryTree\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable RandomBinaryTree.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\RandomBinaryTree.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -101,6 +153,8 @@ CMakeFiles/RandomBinaryTree.dir/build: RandomBinaryTree.exe
 .PHONY : CMakeFiles/RandomBinaryTree.dir/build
 
 CMakeFiles/RandomBinaryTree.dir/requires: CMakeFiles/RandomBinaryTree.dir/main.cpp.obj.requires
+CMakeFiles/RandomBinaryTree.dir/requires: CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj.requires
+CMakeFiles/RandomBinaryTree.dir/requires: CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj.requires
 
 .PHONY : CMakeFiles/RandomBinaryTree.dir/requires
 

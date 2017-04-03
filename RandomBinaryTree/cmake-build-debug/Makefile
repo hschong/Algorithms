@@ -122,6 +122,60 @@ RandomBinaryTree/fast:
 	$(MAKE) -f CMakeFiles\RandomBinaryTree.dir\build.make CMakeFiles/RandomBinaryTree.dir/build
 .PHONY : RandomBinaryTree/fast
 
+CLinkedQueue.obj: CLinkedQueue.cpp.obj
+
+.PHONY : CLinkedQueue.obj
+
+# target to build an object file
+CLinkedQueue.cpp.obj:
+	$(MAKE) -f CMakeFiles\RandomBinaryTree.dir\build.make CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj
+.PHONY : CLinkedQueue.cpp.obj
+
+CLinkedQueue.i: CLinkedQueue.cpp.i
+
+.PHONY : CLinkedQueue.i
+
+# target to preprocess a source file
+CLinkedQueue.cpp.i:
+	$(MAKE) -f CMakeFiles\RandomBinaryTree.dir\build.make CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.i
+.PHONY : CLinkedQueue.cpp.i
+
+CLinkedQueue.s: CLinkedQueue.cpp.s
+
+.PHONY : CLinkedQueue.s
+
+# target to generate assembly for a file
+CLinkedQueue.cpp.s:
+	$(MAKE) -f CMakeFiles\RandomBinaryTree.dir\build.make CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.s
+.PHONY : CLinkedQueue.cpp.s
+
+CMySLL.obj: CMySLL.cpp.obj
+
+.PHONY : CMySLL.obj
+
+# target to build an object file
+CMySLL.cpp.obj:
+	$(MAKE) -f CMakeFiles\RandomBinaryTree.dir\build.make CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj
+.PHONY : CMySLL.cpp.obj
+
+CMySLL.i: CMySLL.cpp.i
+
+.PHONY : CMySLL.i
+
+# target to preprocess a source file
+CMySLL.cpp.i:
+	$(MAKE) -f CMakeFiles\RandomBinaryTree.dir\build.make CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.i
+.PHONY : CMySLL.cpp.i
+
+CMySLL.s: CMySLL.cpp.s
+
+.PHONY : CMySLL.s
+
+# target to generate assembly for a file
+CMySLL.cpp.s:
+	$(MAKE) -f CMakeFiles\RandomBinaryTree.dir\build.make CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.s
+.PHONY : CMySLL.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +212,12 @@ help:
 	@echo ... RandomBinaryTree
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... CLinkedQueue.obj
+	@echo ... CLinkedQueue.i
+	@echo ... CLinkedQueue.s
+	@echo ... CMySLL.obj
+	@echo ... CMySLL.i
+	@echo ... CMySLL.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -5,8 +5,6 @@
 #include "CMySLL.h"
 #include <iostream>
 
-using namespace std;
-
 CMySLL::CMySLL() {
     m_pHead = NULL;
     m_pTail = NULL;
@@ -139,13 +137,25 @@ Node* CMySLL::search(const string data)
     return pNode;
 }
 
-Node* CMySLL::findPrevNode(const Node *pTargetNode) // pTargetNode should not be a pointer indicating head
+Node* CMySLL::search(Node *pTargetNode)
 {
-    if (pTargetNode == NULL)
+    Node *pNode = getHead();
+    if (pNode == NULL || pTargetNode == NULL)
         return NULL;
 
+    while (pNode != pTargetNode)
+    {
+        pNode = pNode->pNext;
+    }
+
+    return pNode;
+}
+
+
+Node* CMySLL::findPrevNode(const Node *pTargetNode) // pTargetNode should not be a pointer indicating head
+{
     Node *pNode = getHead();
-    if (pNode == pTargetNode)
+    if (pNode == NULL || pTargetNode == NULL)
         return NULL;
 
     while (pNode->pNext != pTargetNode)
@@ -165,7 +175,7 @@ bool CMySLL::removeNode()
     Node *pNode = findPrevNode(pTail);
     if (pNode != NULL)
     {
-        setTail(pNode);
+	    setTail(pNode);
     }
 
     cout << "remove a node from tail = " << pTail->data << endl;
@@ -202,12 +212,36 @@ bool CMySLL::removeNode(const string data)
     return true;
 }
 
-bool CMySLL::printData(Node *pNode)
+bool CMySLL::removeNode(Node *pTargetNode)
 {
-    if (pNode == NULL)
+    Node *pPrevNode = NULL;
+
+    if (pTargetNode == NULL)
+    {
+        return false;
+    }
+
+    if (pTargetNode != getHead())
+    {
+        pPrevNode = findPrevNode(pTargetNode);
+        pPrevNode->pNext = pTargetNode->pNext;
+    }
+    else
+    {
+        setHead(pTargetNode->pNext);
+    }
+
+    delete pTargetNode;
+
+    return true;
+}
+
+bool CMySLL::printData(Node *pTargetNode)
+{
+    if (pTargetNode == NULL)
         return false;
 
-    cout << pNode->data;
+    cout << pTargetNode->data;
 
     return true;
 }

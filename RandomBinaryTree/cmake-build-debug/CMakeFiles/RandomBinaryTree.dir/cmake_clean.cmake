@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/RandomBinaryTree.dir/main.cpp.obj"
+  "CMakeFiles/RandomBinaryTree.dir/CLinkedQueue.cpp.obj"
+  "CMakeFiles/RandomBinaryTree.dir/CMySLL.cpp.obj"
   "RandomBinaryTree.pdb"
   "RandomBinaryTree.exe"
   "RandomBinaryTree.exe.manifest"

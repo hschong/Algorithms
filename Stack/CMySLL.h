@@ -26,10 +26,11 @@ public:
     virtual ~CMySLL();
 
     bool isEmpty();
-    bool printData(Node *pNode);
+    bool printData(Node *pTargetNode);
     bool printAll();
 
     Node* search(const string data);
+    Node* search(Node *pTargetNode);
     Node* findPrevNode(const Node *pTargetNode);
 
     Node *getHead() const;
@@ -44,6 +45,7 @@ public:
     bool insertNode(const string data, const string targetData);
 
     bool removeNode();
+    bool removeNode(Node *pTargetNode);
     bool removeNode(const string data);
 };
 

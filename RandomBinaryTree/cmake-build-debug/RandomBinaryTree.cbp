@@ -82,6 +82,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Projects/Study-Algorithm/RandomBinaryTree/CLinkedQueue.cpp">
+			<Option target="RandomBinaryTree"/>
+		</Unit>
+		<Unit filename="C:/Projects/Study-Algorithm/RandomBinaryTree/CLinkedQueue.h">
+			<Option target="RandomBinaryTree"/>
+		</Unit>
+		<Unit filename="C:/Projects/Study-Algorithm/RandomBinaryTree/CMySLL.cpp">
+			<Option target="RandomBinaryTree"/>
+		</Unit>
+		<Unit filename="C:/Projects/Study-Algorithm/RandomBinaryTree/CMySLL.h">
+			<Option target="RandomBinaryTree"/>
+		</Unit>
 		<Unit filename="C:/Projects/Study-Algorithm/RandomBinaryTree/main.cpp">
 			<Option target="RandomBinaryTree"/>
 		</Unit>

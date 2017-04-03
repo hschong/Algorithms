@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Projects/Study-Algorithm/CLinkedQueue/CLinkedQueue.cpp
+CLinkedQueue.h
+C:/Projects/Study-Algorithm/CLinkedQueue/CLinkedQueue.h
+iostream
+-
+
+C:/Projects/Study-Algorithm/CLinkedQueue/CLinkedQueue.h
+CMySLL.h
+C:/Projects/Study-Algorithm/CLinkedQueue/CMySLL.h
+
+C:/Projects/Study-Algorithm/CLinkedQueue/CMySLL.cpp
+CMySLL.h
+C:/Projects/Study-Algorithm/CLinkedQueue/CMySLL.h
+iostream
+-
+
+C:/Projects/Study-Algorithm/CLinkedQueue/CMySLL.h
+string
+-
+
+C:/Projects/Study-Algorithm/CLinkedQueue/main.cpp
+iostream
+-
+CLinkedQueue.h
+C:/Projects/Study-Algorithm/CLinkedQueue/CLinkedQueue.h
+
