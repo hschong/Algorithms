@@ -8,7 +8,7 @@
 
 class CNodeForRBT {
 public:
-    int m_Data;
+    unsigned int m_Data;
     CNodeForRBT *m_pLeft, *m_pRight;
 
 public:

@@ -9,7 +9,7 @@
 
 class CMyRandomBinaryTree {
 protected:
-    CNodeForRBT *m_pRoot, *m_pZero;
+    CNodeForRBT *m_pRoot;
 
 public:
     CMyRandomBinaryTree();

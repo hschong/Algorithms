@@ -8,5 +8,7 @@ CMakeFiles/RandomBinaryTreeForBFS.dir/CMyRandomBinaryTree.cpp.obj: ../CNodeForRB
 CMakeFiles/RandomBinaryTreeForBFS.dir/CNodeForRBT.cpp.obj: ../CNodeForRBT.cpp
 CMakeFiles/RandomBinaryTreeForBFS.dir/CNodeForRBT.cpp.obj: ../CNodeForRBT.h
 
+CMakeFiles/RandomBinaryTreeForBFS.dir/main.cpp.obj: ../CMyRandomBinaryTree.h
+CMakeFiles/RandomBinaryTreeForBFS.dir/main.cpp.obj: ../CNodeForRBT.h
 CMakeFiles/RandomBinaryTreeForBFS.dir/main.cpp.obj: ../main.cpp
 

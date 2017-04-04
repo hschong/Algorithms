@@ -4,9 +4,11 @@
 
 #include "CNodeForRBT.h"
 #include <cstdlib>
+#include <ctime>
 
 CNodeForRBT::CNodeForRBT()
 {
+    srand((unsigned int)time(NULL));
     this->m_pLeft = this;
     this->m_pRight = this;
     this->m_Data = 0;

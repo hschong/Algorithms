@@ -21,10 +21,18 @@ CNodeForRBT.h
 C:/Projects/Study-Algorithm/RandomBinaryTreeForBFS/CNodeForRBT.h
 cstdlib
 -
+ctime
+-
 
 C:/Projects/Study-Algorithm/RandomBinaryTreeForBFS/CNodeForRBT.h
 
 C:/Projects/Study-Algorithm/RandomBinaryTreeForBFS/main.cpp
 iostream
 -
+cstdlib
+-
+ctime
+-
+CMyRandomBinaryTree.h
+C:/Projects/Study-Algorithm/RandomBinaryTreeForBFS/CMyRandomBinaryTree.h
 

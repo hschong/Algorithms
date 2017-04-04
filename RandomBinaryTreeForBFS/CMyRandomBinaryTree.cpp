@@ -33,7 +33,7 @@ CNodeForRBT* CMyRandomBinaryTree::search(int data, CNodeForRBT *pNode)
 {
     if (pNode == NULL)
     {
-        cout << "can't find a node from the tree." << endl;
+        cout << "can't find " << data << " from the tree." << endl;
         return NULL;
     }
 
@@ -68,6 +68,7 @@ CNodeForRBT* CMyRandomBinaryTree::insert(int data)
     if (m_pRoot == NULL)
     {
         m_pRoot = new CNodeForRBT(data, NULL, NULL);
+        cout << "insert " << data << " into a tree" << endl;
         return m_pRoot;
     }
 
@@ -81,9 +82,11 @@ CNodeForRBT* CMyRandomBinaryTree::insert(int data, CNodeForRBT *pNode) // Tree s
         if (m_pRoot == NULL)
         {
             m_pRoot = new CNodeForRBT(data, NULL, NULL);
+            cout << "insert " << data << " into a tree" << endl;
             return m_pRoot;
         }
 
+        cout << "insert " << data << " into a tree" << endl;
         return new CNodeForRBT(data, NULL, NULL);
     }
     else if (data < pNode->m_Data)
@@ -94,12 +97,7 @@ CNodeForRBT* CMyRandomBinaryTree::insert(int data, CNodeForRBT *pNode) // Tree s
     {
         pNode->m_pRight = insert(data, pNode->m_pRight);
     }
-    else
-    {
-        cout << "can't insert the node into the tree because the same value of the node was found from the tree." << endl;
-        return NULL;
-    }
-
+    
     return pNode;
 }
 
