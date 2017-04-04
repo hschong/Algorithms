@@ -1,5 +1,5 @@
 //
-// Created by heese on 2017-04-04.
+// Created by heeseok.chong on 2017-04-04.
 //
 
 #include "CMyRandomBinaryTree.h"
@@ -15,6 +15,10 @@ CMyRandomBinaryTree::CMyRandomBinaryTree()
 
 CMyRandomBinaryTree::~CMyRandomBinaryTree() {
 
+}
+
+CNodeForRBT *CMyRandomBinaryTree::getM_pRoot() const {
+    return m_pRoot;
 }
 
 bool CMyRandomBinaryTree::isEmpty()
@@ -266,7 +270,5 @@ void CMyRandomBinaryTree::printNodesAtEachDepth()
 
 }
 
-CNodeForRBT *CMyRandomBinaryTree::getM_pRoot() const {
-    return m_pRoot;
-}
+
 
