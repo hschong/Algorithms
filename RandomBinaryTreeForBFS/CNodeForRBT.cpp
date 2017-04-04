@@ -29,3 +29,11 @@ CNodeForRBT::CNodeForRBT(int data, CNodeForRBT *pLeft, CNodeForRBT *pRight) : m_
 CNodeForRBT::~CNodeForRBT() {
 
 }
+
+unsigned int CNodeForRBT::getM_Depth() const {
+    return m_Depth;
+}
+
+void CNodeForRBT::setM_Depth(unsigned int depth) {
+    CNodeForRBT::m_Depth = depth;
+}

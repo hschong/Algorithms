@@ -5,11 +5,14 @@
 #ifndef RANDOMBINARYTREEFORBFS_CMYRANDOMBINARYTREE_H
 #define RANDOMBINARYTREEFORBFS_CMYRANDOMBINARYTREE_H
 
+#include <unwind.h>
 #include "CNodeForRBT.h"
 
 class CMyRandomBinaryTree {
 protected:
     CNodeForRBT *m_pRoot;
+public:
+    CNodeForRBT *getM_pRoot() const;
 
 public:
     CMyRandomBinaryTree();
@@ -22,6 +25,9 @@ public:
     CNodeForRBT* insert(int data);
     CNodeForRBT* insert(int data, CNodeForRBT *pNode);
     CNodeForRBT* remove(int data, CNodeForRBT* pTargetNode, CNodeForRBT *pParentNode);
+    void printNodesAtEachDepth();
+    void printNodesAtDepth(unsigned int depth);
+
 };
 
 

@@ -4,6 +4,7 @@
 
 #include "CMyRandomBinaryTree.h"
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -32,10 +33,7 @@ CNodeForRBT* CMyRandomBinaryTree::search(int data)
 CNodeForRBT* CMyRandomBinaryTree::search(int data, CNodeForRBT *pNode)
 {
     if (pNode == NULL)
-    {
-        cout << "can't find " << data << " from the tree." << endl;
         return NULL;
-    }
 
     if (data == pNode->m_Data)
     {
@@ -68,7 +66,7 @@ CNodeForRBT* CMyRandomBinaryTree::insert(int data)
     if (m_pRoot == NULL)
     {
         m_pRoot = new CNodeForRBT(data, NULL, NULL);
-        cout << "insert " << data << " into a tree" << endl;
+        cout << "insert random number(" << data << ") into a tree, ";
         return m_pRoot;
     }
 
@@ -82,11 +80,11 @@ CNodeForRBT* CMyRandomBinaryTree::insert(int data, CNodeForRBT *pNode) // Tree s
         if (m_pRoot == NULL)
         {
             m_pRoot = new CNodeForRBT(data, NULL, NULL);
-            cout << "insert " << data << " into a tree" << endl;
+            cout << "insert random number(" << data << ") into a tree, ";
             return m_pRoot;
         }
 
-        cout << "insert " << data << " into a tree" << endl;
+        cout << "insert random number(" << data << ") into a tree, ";
         return new CNodeForRBT(data, NULL, NULL);
     }
     else if (data < pNode->m_Data)
@@ -97,7 +95,7 @@ CNodeForRBT* CMyRandomBinaryTree::insert(int data, CNodeForRBT *pNode) // Tree s
     {
         pNode->m_pRight = insert(data, pNode->m_pRight);
     }
-    
+
     return pNode;
 }
 
@@ -105,7 +103,7 @@ CNodeForRBT* CMyRandomBinaryTree::remove(int data, CNodeForRBT* pTargetNode, CNo
 {
     if (pTargetNode == NULL)
     {
-        cout << "can't remove a node in the tree." << endl;
+        cout << "can't find the node in the tree." << endl;
         return NULL;
     }
 
@@ -170,4 +168,105 @@ CNodeForRBT* CMyRandomBinaryTree::remove(int data, CNodeForRBT* pTargetNode, CNo
 
 }
 
+void CMyRandomBinaryTree::printNodesAtDepth(unsigned int depth)
+{
+    CNodeForRBT node;
+    unsigned int data = 0;
+    unsigned int curDepth = 0;
+
+    queue<CNodeForRBT> myQueue;
+    CNodeForRBT *pTree = getM_pRoot();
+
+    if (pTree == NULL)
+    {
+        cout << "Tree is empty!" << endl;
+    }
+    else
+    {
+        pTree->setM_Depth(0);
+        myQueue.push(*pTree);
+
+        while (!myQueue.empty())
+        {
+            node = myQueue.front();
+            data = node.m_Data;
+            curDepth = node.getM_Depth();
+            myQueue.pop();
+
+            if (depth == node.getM_Depth())
+            {
+                cout << data << " ";
+            }
+            else if (depth < node.getM_Depth())
+            {
+                cout << endl;
+            }
+
+            if (node.m_pLeft != NULL)
+            {
+                node.m_pLeft->setM_Depth(node.getM_Depth()+1);
+                myQueue.push(*node.m_pLeft);
+            }
+
+            if (node.m_pRight != NULL)
+            {
+                node.m_pRight->setM_Depth(node.getM_Depth()+1);
+                myQueue.push(*node.m_pRight);
+            }
+
+        }
+    }
+}
+
+void CMyRandomBinaryTree::printNodesAtEachDepth()
+{
+    CNodeForRBT node;
+    unsigned int data = 0;
+    unsigned int prevDepth = 0;
+
+    queue<CNodeForRBT> myQueue;
+    CNodeForRBT *pTree = getM_pRoot();
+
+    if (pTree == NULL)
+    {
+        cout << "Tree is empty!" << endl;
+    }
+    else
+    {
+        pTree->setM_Depth(0);
+        myQueue.push(*pTree);
+
+        while (!myQueue.empty())
+        {
+            node = myQueue.front();
+            data = node.m_Data;
+            prevDepth = node.getM_Depth();
+            myQueue.pop();
+            cout << data << " ";
+
+            if (node.m_pLeft != NULL)
+            {
+                node.m_pLeft->setM_Depth(node.getM_Depth()+1);
+                myQueue.push(*node.m_pLeft);
+            }
+
+            if (node.m_pRight != NULL)
+            {
+                node.m_pRight->setM_Depth(node.getM_Depth()+1);
+                myQueue.push(*node.m_pRight);
+            }
+
+            if ((!myQueue.empty()) &&
+                    (prevDepth != myQueue.front().getM_Depth()))
+            {
+                cout << endl;
+            }
+        }
+    }
+
+}
+
+CNodeForRBT *CMyRandomBinaryTree::getM_pRoot() const {
+    return m_pRoot;
+}
 

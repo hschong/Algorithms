@@ -9,6 +9,7 @@
 class CNodeForRBT {
 public:
     unsigned int m_Data;
+    unsigned int m_Depth;
     CNodeForRBT *m_pLeft, *m_pRight;
 
 public:
@@ -17,6 +18,9 @@ public:
     CNodeForRBT(int data, CNodeForRBT *m_pLeft, CNodeForRBT *m_pRight);
 
     virtual ~CNodeForRBT();
+
+    unsigned int getM_Depth() const;
+    void setM_Depth(unsigned int depth);
 };
 
 
