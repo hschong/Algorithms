@@ -1,3 +1,1 @@
-"C:\Program Files (x86)\JetBrains\CLion 2016.3.3\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\RandomBinaryTreeForBFS.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\RandomBinaryTreeForBFS.dir/objects.a @CMakeFiles\RandomBinaryTreeForBFS.dir\objects1.rsp
-C:\MinGW\bin\g++.exe  -g   -Wl,--whole-archive CMakeFiles\RandomBinaryTreeForBFS.dir/objects.a -Wl,--no-whole-archive  -o RandomBinaryTreeForBFS.exe -Wl,--out-implib,libRandomBinaryTreeForBFS.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\RandomBinaryTreeForBFS.dir\linklibs.rsp
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/RandomBinaryTreeForBFS.dir/main.cpp.o CMakeFiles/RandomBinaryTreeForBFS.dir/CMyRandomBinaryTree.cpp.o CMakeFiles/RandomBinaryTreeForBFS.dir/CNodeForRBT.cpp.o  -o RandomBinaryTreeForBFS 

@@ -1,11 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/RandomBinaryTreeForBFS.dir/main.cpp.obj"
-  "CMakeFiles/RandomBinaryTreeForBFS.dir/CMyRandomBinaryTree.cpp.obj"
-  "CMakeFiles/RandomBinaryTreeForBFS.dir/CNodeForRBT.cpp.obj"
+  "CMakeFiles/RandomBinaryTreeForBFS.dir/main.cpp.o"
+  "CMakeFiles/RandomBinaryTreeForBFS.dir/CMyRandomBinaryTree.cpp.o"
+  "CMakeFiles/RandomBinaryTreeForBFS.dir/CNodeForRBT.cpp.o"
   "RandomBinaryTreeForBFS.pdb"
-  "RandomBinaryTreeForBFS.exe"
-  "RandomBinaryTreeForBFS.exe.manifest"
-  "libRandomBinaryTreeForBFS.dll.a"
+  "RandomBinaryTreeForBFS"
 )
 
 # Per-language clean rules from dependency scanning.

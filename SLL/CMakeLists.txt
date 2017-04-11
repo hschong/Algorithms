@@ -3,5 +3,5 @@ project(SLL)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp CMySLL.cpp CMySLL.h)
+set(SOURCE_FILES main.cpp CMySLL.h CMyNode.h)
 add_executable(SLL ${SOURCE_FILES})

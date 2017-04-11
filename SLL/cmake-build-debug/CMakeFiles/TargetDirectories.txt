@@ -1,3 +1,3 @@
-C:/Projects/Study-Algorithm/SLL/cmake-build-debug/CMakeFiles/SLL.dir
-C:/Projects/Study-Algorithm/SLL/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Projects/Study-Algorithm/SLL/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/hchong/Projects/Study-Algorithm/SLL/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/hchong/Projects/Study-Algorithm/SLL/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/hchong/Projects/Study-Algorithm/SLL/cmake-build-debug/CMakeFiles/SLL.dir

@@ -1,10 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/SLL.dir/main.cpp.obj"
-  "CMakeFiles/SLL.dir/CMySLL.cpp.obj"
+  "CMakeFiles/SLL.dir/main.cpp.o"
   "SLL.pdb"
-  "SLL.exe"
-  "SLL.exe.manifest"
-  "libSLL.dll.a"
+  "SLL"
 )
 
 # Per-language clean rules from dependency scanning.

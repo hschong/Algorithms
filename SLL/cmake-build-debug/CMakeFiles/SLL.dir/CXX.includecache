@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-C:/Projects/Study-Algorithm/SLL/CMySLL.cpp
-CMySLL.h
-C:/Projects/Study-Algorithm/SLL/CMySLL.h
+/Users/hchong/Projects/Study-Algorithm/SLL/CMyNode.h
+
+/Users/hchong/Projects/Study-Algorithm/SLL/CMySLL.h
 iostream
 -
-
-C:/Projects/Study-Algorithm/SLL/CMySLL.h
 string
 -
+CMyNode.h
+/Users/hchong/Projects/Study-Algorithm/SLL/CMyNode.h
 
-C:/Projects/Study-Algorithm/SLL/main.cpp
+/Users/hchong/Projects/Study-Algorithm/SLL/main.cpp
 iostream
 -
 CMySLL.h
-C:/Projects/Study-Algorithm/SLL/CMySLL.h
+/Users/hchong/Projects/Study-Algorithm/SLL/CMySLL.h
 

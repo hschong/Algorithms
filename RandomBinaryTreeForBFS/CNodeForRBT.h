@@ -1,5 +1,5 @@
 //
-// Created by heese on 2017-04-04.
+// Created by heeseok.chong on 2017-04-04.
 //
 
 #ifndef RANDOMBINARYTREEFORBFS_CNODEFORRBT_H
