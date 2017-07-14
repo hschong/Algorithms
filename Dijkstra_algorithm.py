@@ -49,7 +49,7 @@ while node is not None:
     neighbors = graph[node]
 
     for i in neighbors.keys():
-        new_cost = lowest_cost + neighbors[n]
+        new_cost = lowest_cost + neighbors[i]
 
         if costs_from_start[i] > new_cost:
             costs_from_start[i] = new_cost
