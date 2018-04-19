@@ -1,35 +1,34 @@
 # simple merge sort
-def m_sort(list):
-    result = []
+def simple_merge_sort(list):
+    new_sorted_list = []
     length = len(list)
     mid = length // 2
 
-    if length <= 1:
+    if length < 2:
         return list
 
-    first_group = m_sort(list[:mid])
-    second_group = m_sort(list[mid:])
-
-    while first_group and second_group:
-        if first_group[0] < second_group[0]:
-            result.append(first_group.pop(0))
+    small_group = simple_merge_sort(list[:mid])
+    large_group = simple_merge_sort(list[mid:])
+    
+    while small_group and large_group:
+        if small_group[0] < large_group[0]:
+            new_sorted_list.append(small_group.pop(0))
         else:
-            result.append(second_group.pop(0))
+            new_sorted_list.append(large_group.pop(0))
 
-    while first_group:
-        result.append(first_group.pop(0))
+    while small_group:
+        new_sorted_list.append(small_group.pop(0))
+    
+    while large_group:
+        new_sorted_list.append(large_group.pop(0))
 
-    while second_group:
-        result.append(second_group.pop(0))
-
-    return result
-
+    return new_sorted_list
 
 # general merge sort
 def merge_sort(list):
     length = len(list)
 
-    if length <= 1:
+    if length < 2:
         return list
 
     mid = length // 2
@@ -69,7 +68,7 @@ def merge_sort(list):
 
 
 list = [6, 8, 3, 9, 10, 1, 2, 4, 7, 5]
-print(m_sort(list))
+print(simple_merge_sort(list))
 print(merge_sort(list))
 
 
