@@ -1,22 +1,21 @@
-# simple insertion sort
-def find_ins_idx(sorted_list, value):
-    for i in range(0, len(sorted_list)):
-        if value < sorted_list[i]:
-            return i
+# Find index to insert item in the list.
+def find_index_to_insert_item(list, item):
+    length = len(list)
+    for index in range(0, length):
+        if item < list[index]:
+            return index
 
-    return len(sorted_list) # the value will be added after the list
+    return len(list)
 
-def ins_sort(list):
-    new_list = []
+# A simple insertion sort
+def simple_insertion_sort(list):
+    new_sorted_list = []
     
-    while list:
-        value = list.pop(0)
-        ins_idx = find_ins_idx(new_list, value)
-        new_list.insert(ins_idx, value)
+    for i in range(0, len(list)):
+        index = find_index_to_insert_item(new_sorted_list, list[i])
+        new_sorted_list.insert(index, list[i])
     
-
-    return new_list
-
+    return new_sorted_list
 
 # general insertion sort
 def insertion_sort(list):
@@ -38,10 +37,7 @@ data1 = [2, 4, 5, 1, 3]
 data2 = [2, 4, 5, 1, 3]
 
 print(data1)
-print(ins_sort(data1))
+print(simple_insertion_sort(data1))
 
 print(data2)
 print(insertion_sort(data2))
-
-
-
