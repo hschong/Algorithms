@@ -1,21 +1,21 @@
 # simple quick sort
-def q_sort(list):
+def simple_quick_sort(list):
+    
     length = len(list)
-
-    if length <= 1:
+    if length < 2:
         return list
 
-    pivot = list[-1]
-    small_group  = []
-    large_group = []
+    pivot = list[0]
+    greater = []
+    less = []
 
-    for i in range(0, length-1):
-        if list[i] <= pivot:
-            small_group.append(list[i])
+    for i in range(1, length):
+        if list[i] > pivot:
+            greater.append(list[i])
         else:
-            large_group.append(list[i])
-
-    return q_sort(small_group) + [pivot] + q_sort(large_group)
+            less.append(list[i])
+    
+    return simple_quick_sort(less) + [pivot] + simple_quick_sort(greater)
 
 # general quick sort
 def quick_sort(list, start, end):
@@ -38,7 +38,7 @@ def quick_sort(list, start, end):
 
 data = [6, 8, 3, 9, 10, 1, 2, 4, 7, 5]
 
-print(q_sort(data))
+print(simple_quick_sort(data))
 print(data)
 quick_sort(data, 0, len(data)-1)
 print(data)
