@@ -37,7 +37,7 @@ data1 = [5, 3, 6, 2, 10, 15, 9, 1, 11, 7]
 data2 = [5, 3, 6, 2, 10, 15, 9, 1, 11, 7]
 
 print(data1)
-print(sel_sort(data1))
+print(simple_selection_sort(data1))
 
 print(data2)
 selection_sort(data2)
