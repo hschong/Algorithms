@@ -36,7 +36,7 @@ def quick_sort(list, start, end):
     quick_sort(list, i+1, end)
 
 
-data = [6, 8, 3, 9, 10, 1, 2, 4, 7, 5]
+data = [6, 8, 5, 9, 10, 1, 2, 4, 7, 3]
 
 print(simple_quick_sort(data))
 print(data)
