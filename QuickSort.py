@@ -1,4 +1,4 @@
-# simple quick sort
+# Simple quick sort
 def simple_quick_sort(list):
     
     length = len(list)
@@ -17,20 +17,21 @@ def simple_quick_sort(list):
     
     return simple_quick_sort(less) + [pivot] + simple_quick_sort(greater)
 
-# general quick sort
+
+# General quick sort
 def quick_sort(list, start, end):
     if end - start < 1:
-        return  # the element does not exist or is an only one in the list, or the given start and end are wrong.
+        return  # The element does not exist or is an only one in the list, or the given start and end are wrong.
 
     pivot = list[end]
-    i = start
+    i = start # i is the less counter for the list, but j is an element comparing to the pivot in the list.
 
-    for j in range(start, end):
-        if list[j] <= pivot:
+    for j in range(start, end): # Looping until end - 1 because end is the pivot.
+        if list[j] <= pivot: # Putting the less elements on the left side by swapping.
             if i != j:
                 list[i], list[j] = list[j], list[i]
             i += 1
-    list[i], list[end] = list[end], list[i]
+    list[i], list[end] = list[end], list[i] # Changing the pivot place after i counter.
 
     quick_sort(list, start, i-1)
     quick_sort(list, i+1, end)
