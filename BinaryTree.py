@@ -99,7 +99,7 @@ def getHeight(tree) :
 
         if tree.left != None :
             leftHeight = 1 + getHeight(tree.left)
-        else : # Be careful! Do not referenced before assignment.
+        else : # Be careful! Do not reference before assignment.
             return leftHeight
         
         if tree.right != None :
