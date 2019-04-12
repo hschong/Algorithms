@@ -1,22 +1,36 @@
-def binary_search(list, item):
-    min_idx = 0
-    max_idx = len(list) - 1
+def binarySearch(startIndex, endIndex, targetList, item):
+    while startIndex <= endIndex:
+        midIndex = (startIndex + endIndex) // 2
+        guess = targetList[midIndex]
+        
+        if guess == item:
+            return midIndex
+        elif guess > item:
+            endIndex = midIndex - 1
+        else:
+            startIndex = midIndex + 1
+    
+    return None
 
-    while min_idx <= max_idx:
+def binarySearch(targetList, item):
+    minIndex = 0
+    maxIndex = len(targetList) - 1
 
-        mid_idx = (min_idx + max_idx) // 2
-        guess = list[mid_idx]
+    while minIndex <= maxIndex:
+
+        midIndex = (minIndex + maxIndex) // 2
+        guess = list[midIndex]
 
         if guess == item:
-            return guess
+            return midIndex
         elif guess > item:
-            max_idx = mid_idx - 1
+            maxIndex = midIndex - 1
         else:
-            min_idx = mid_idx + 1
+            minIndex = midIndex + 1
 
     return None
 
-my_list = [1, 3, 5, 7, 9]
-print(binary_search(my_list, 3))
+mylist = [1, 3, 5, 7, 9]
+print(binarySearch(mylist, 3))
 
 
