@@ -1,4 +1,4 @@
-def binarySearch(startIndex, endIndex, targetList, item):
+def binarySearchWithIndices(startIndex, endIndex, targetList, item):
     while startIndex <= endIndex:
         midIndex = (startIndex + endIndex) // 2
         guess = targetList[midIndex]
