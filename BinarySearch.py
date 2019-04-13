@@ -17,9 +17,8 @@ def binarySearch(targetList, item):
     maxIndex = len(targetList) - 1
 
     while minIndex <= maxIndex:
-
         midIndex = (minIndex + maxIndex) // 2
-        guess = list[midIndex]
+        guess = targetList[midIndex]
 
         if guess == item:
             return midIndex
