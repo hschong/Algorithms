@@ -9,9 +9,8 @@ class LinkedListPipe:
         self.end = None
 
     def addLeft(self, n) :
-        '''
-        Adding an element into the pipe on the left.
-        '''
+        # Adding an element into the pipe on the left.
+    
         elem = LinkedListElement()
         elem.value = n
 
@@ -24,9 +23,8 @@ class LinkedListPipe:
         pass
 
     def addRight(self, n) :
-        '''
-        Adding an eleement into the pipe on the right.
-        '''
+        # Adding an eleement into the pipe on the right.
+        
         elem = LinkedListElement()
         elem.value = n
 
@@ -38,9 +36,8 @@ class LinkedListPipe:
             self.end = elem
 
     def getBeads(self) :
-        '''
-        Converting the pipe into the list, and returning the list.
-        '''
+        # Converting the pipe into the list, and returning the list.
+        
         counter = self.start
         result = []
 
@@ -51,15 +48,13 @@ class LinkedListPipe:
         return result
 
 def processBeads(myInput) :
-    '''
-    myInput[i][0] : Elements' index
-    myInput[i][1] : Direction to add, 0 : left, 1 : right
+    # myInput[i][0] : Elements' index
+    # myInput[i][1] : Direction to add, 0 : left, 1 : right
 
-    myInput[0][0] = 1, myInput[0][1] = 0,
-    myInput[1][0] = 2, myInput[1][1] = 1,
-    myInput[2][0] = 3, myInput[2][1] = 0
-    '''
-
+    # myInput[0][0] = 1, myInput[0][1] = 0,
+    # myInput[1][0] = 2, myInput[1][1] = 1,
+    # myInput[2][0] = 3, myInput[2][1] = 0
+    
     myPipe = LinkedListPipe()
 
     for x in myInput :
@@ -84,14 +79,13 @@ if __name__ == "__main__":
     main()
 
 
-...
-Input sample
-3
-1 0
-2 1
-3 0
 
-Output sample
-3 1 2
-... 
+# Input sample
+# 3
+# 1 0
+# 2 1
+# 3 0
+
+# Output sample
+# 3 1 2
 
