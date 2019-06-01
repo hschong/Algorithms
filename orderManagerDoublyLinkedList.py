@@ -7,7 +7,7 @@ class LinkedListElement :
 
 class OrderManger :
     def __init__(self) :
-        self.begin = None
+        self.start = None
         self.end = None
 
         # Using dictionary(hash) for a better searching.
