@@ -110,7 +110,7 @@ def main():
     for i in range(n) :
         myList.append([int(v) for v in input().split()])
 
-    print(*processBeads(myList))
+    # print(*processBeads(myList))
 
 if __name__ == "__main__":
     main()
