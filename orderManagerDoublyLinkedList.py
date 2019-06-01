@@ -3,14 +3,14 @@ class LinkedListElement :
         self.data = data
         self.next = next
         self.prev = prev
-    
+
 
 class OrderManger :
     def __init__(self) :
         self.begin = None
         self.end = None
 
-        # using dictionary(hash) for a better searching
+        # Using dictionary(hash) for a better searching.
         self.orderHash = {}
 
     # targetOrder <--> (newOrder) <--> targetOrder.next
@@ -33,7 +33,7 @@ class OrderManger :
         
         self.orderHash[newID] = newOrder
 
-    # Add an order after self.end.
+    # Add an order after the self.end.
     def appendOrder(self, orderID) :
         newOrder = LinkedListElement(orderID, None, None)
 
@@ -47,11 +47,13 @@ class OrderManger :
 
         self.orderHash[orderID] = newOrder
 
-
     def removeOrder(self, orderID) :
         order = self.orderHash[orderID]
 
-        if order != None :
+        if order is None :
+            return False
+        
+        else :
             prevOrder = order.prev
             nextOrder = order.next
 
@@ -68,10 +70,9 @@ class OrderManger :
                 self.end = prevOrder
 
             del self.orderHash[orderID]
+            return True
 
-
-    # 주문번호 orderId가 몇 번째로 처리될지를 반환합니다.
-    # 만약 주문번호 orderId가 존재하지 않으면 -1을 반환합니다. 
+    # Order prioity
     def getOrder(self, orderId) :
         count = 1
         current = self.begin
@@ -85,12 +86,9 @@ class OrderManger :
 
         return -1
 
+
 def main():
     manager = OrderManger()
-
-    # '''
-    # 테스트를 하고싶으면, 아래 부분을 수정합니다.
-    # '''
 
     manager.appendOrder(1)
     manager.appendOrder(2)
