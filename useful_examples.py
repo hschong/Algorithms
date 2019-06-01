@@ -25,4 +25,9 @@ for index in range(len(mylist)):
 for idx, val in enumerate(mylist):
     print(idx, val)
 
-
+# get the index of a given number
+print(mylist)
+if 'a' not in mylist:
+    print(-1)
+else:
+    print(mylist.index('a'))
