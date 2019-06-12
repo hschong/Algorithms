@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "CLinkedQueue": true,
+        "DLL": true,
+        "DS01": true,
+        "Fibonacci": true,
+        "RandomBinaryTreeForBFS": true,
+        "SLL": true,
+        "Stack": true
+    }
+}
