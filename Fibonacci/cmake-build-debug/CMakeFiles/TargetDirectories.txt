@@ -1,3 +1,0 @@
-C:/Projects/Study-Algorithm/Fibonacci/cmake-build-debug/CMakeFiles/Fibonacci.dir
-C:/Projects/Study-Algorithm/Fibonacci/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Projects/Study-Algorithm/Fibonacci/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,3 +1,0 @@
-C:/Projects/Study-Algorithm/Stack/cmake-build-debug/CMakeFiles/Stack.dir
-C:/Projects/Study-Algorithm/Stack/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Projects/Study-Algorithm/Stack/cmake-build-debug/CMakeFiles/rebuild_cache.dir
