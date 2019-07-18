@@ -1,3 +1,0 @@
-C:/Projects/Study-Algorithm/DS01/cmake-build-debug/CMakeFiles/DS01.dir
-C:/Projects/Study-Algorithm/DS01/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Projects/Study-Algorithm/DS01/cmake-build-debug/CMakeFiles/rebuild_cache.dir

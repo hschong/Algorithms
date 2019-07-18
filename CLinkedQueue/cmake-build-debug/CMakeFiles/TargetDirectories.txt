@@ -1,3 +1,0 @@
-C:/Projects/Study-Algorithm/CLinkedQueue/cmake-build-debug/CMakeFiles/CLinkedQueue.dir
-C:/Projects/Study-Algorithm/CLinkedQueue/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Projects/Study-Algorithm/CLinkedQueue/cmake-build-debug/CMakeFiles/rebuild_cache.dir
