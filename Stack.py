@@ -1,42 +1,54 @@
 class Stack:
-    def __init__(self) :
+    def __init__(self, max) :
         self.data = []
+        self.maxSize = max
 
     def push(self, n) :
-        self.data.append(n)
+        if self.isFull() == False :
+            self.data.append(n)
+            return True
+        else :
+            return False
 
     def pop(self) :
-        if len(self.data) == 0 :
-            return
+        if self.isEmpty() == True :
+            return False
         else :
             # self.data = self.data[:-1]
             self.data.pop()
+            return True
 
-    def size(self) :
+    def getSize(self) :
         return len(self.data)
 
-    def empty(self) :
+    def isEmpty(self) :
         if len(self.data) == 0 :
-            return 1
+            return True
         else :
-            return 0
+            return False
+
+    def isFull(self) :
+        if self.getSize() == self.maxSize :
+            return True
+        else :
+            return False
             
-    def top(self) :
+    def getTop(self) :
         if len(self.data) == 0 :
             return -1
         else :
             return self.data[-1]
 
 def main():
-    stack = Stack()
+    stack = Stack(100)
 
     stack.push(1)
     stack.push(2)
     stack.push(4)
     stack.pop()
 
-    print(stack.size()) 
-    print(stack.top())
+    print(stack.getSize()) 
+    print(stack.getTop())
 
 
 if __name__ == "__main__":
