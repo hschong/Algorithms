@@ -8,10 +8,12 @@ class Stack:
             self.data.append(n)
             return True
         else :
+            print("Your stack is full. hence, you can't push.")
             return False
 
     def pop(self) :
         if self.isEmpty() == True :
+            print("Your stack is empty. hence, you can't pop from the stack.")
             return False
         else :
             # self.data = self.data[:-1]
@@ -23,18 +25,20 @@ class Stack:
 
     def isEmpty(self) :
         if len(self.data) == 0 :
+            print('The stack is empty.')
             return True
         else :
             return False
 
     def isFull(self) :
         if self.getSize() == self.maxSize :
+            print('The stack is full.')
             return True
         else :
             return False
             
     def getTop(self) :
-        if len(self.data) == 0 :
+        if self.isEmpty() == True :
             return -1
         else :
             return self.data[-1]
