@@ -1,14 +1,18 @@
 class Tree:
-    def __init__(self, node, left, right) :
-        self.node = node
+    def __init__(self, value, left, right) :
+        self.root = value
         self.left = left
         self.right = right
 
-    def addTree(self, node, left, right) :
-        if self.node == None :
-            self.node = node
+    def addTree(self, value, left, right) :
+        # 1. Find the value in the tree.
+        # 2. Make the them(left and right) tree.
+        
+        if self.root == None :
+            # Set the value as root if the tree is empty.
+            self.root = value
 
-        if self.node == node :
+        if self.root == value : # Found the value at root(level 0).
             if left == None :
                 self.left = None
             else :
@@ -18,34 +22,26 @@ class Tree:
                 self.right = None
             else :
                 self.right = Tree(right, None, None)
-                
+
             return True 
-        else : # find the node in the tree.
-            if self.left != None :
-                flag = self.left.addTree(node, left, right)
-            else :
-                flag = False
             
-            if flag == True :
-                return True
+        else : # Deep dive to find the value in the tree.
+            if self.left != None :
+                if self.left.addTree(value, left, right) == True :
+                    return True
             else :
                 if self.right != None :
-                    flag = self.right.addTree(node, left, right)
-                else :
-                    flag = False
-                    
-                if flag == True :
-                    return True
-                else :
-                    return False
-
+                    if self.right.addTree(value, left, right) == True :
+                        return True
+            
+            return False    
 
 def preorder(tree) :
     '''
     Root -> L -> R
     '''
     result = []
-    result.append(tree.node) # Root
+    result.append(tree.root) # Root
     
     if tree.left != None : # Left
         result = result + preorder(tree.left)
@@ -64,7 +60,7 @@ def inorder(tree) :
     if tree.left != None : # Left
         result = result + inorder(tree.left)
     
-    result.append(tree.node) # Root
+    result.append(tree.root) # Root
     
     if tree.right != None : # Right
         result = result + inorder(tree.right)
@@ -83,7 +79,7 @@ def postorder(tree) :
     if tree.right != None : # Right
         result = result + postorder(tree.right)
         
-    result.append(tree.node) # Root
+    result.append(tree.root) # Root
 
     return result
 
@@ -136,13 +132,20 @@ def main() :
         if myList[2] == -1 :
             myList[2] = None
 
-        # node : myList, left child : myList[1], right child : myList[2]
+        # node      : myList, left child : myList[1], right child : myList[2]
         # 5         : numbers
+
         # 1 2 3     : root(1), left child(2), right child(3)
         # 2 4 5     : node(2), left child(4), right child(5)
         # 3 -1 -1   : node(3), no child
         # 4 -1 -1   : node(4), no child
         # 5 -1 -1   : node(5), no child
+        
+        # 1 2 3
+        # 2 4 5
+        # 3 -1 -1
+        # 4 -1 -1
+        # 5 -1 -1
         myTree.addTree(myList[0], myList[1], myList[2])
 
     print(*preorder(myTree))
