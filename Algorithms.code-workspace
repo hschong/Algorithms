@@ -6,7 +6,7 @@
 	],
 	"settings": {
 		"files.exclude": {
-			"README.md": true
+			"Algorithms.code-workspace": true
 		}
 	}
 }
