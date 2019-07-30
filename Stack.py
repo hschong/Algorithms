@@ -44,7 +44,8 @@ class Stack:
             return self.data[-1]
 
 def main():
-    stack = Stack(100)
+    max = int(input('type the maximum size of your stack: '))
+    stack = Stack(max)
 
     stack.push(1)
     stack.push(2)

@@ -40,8 +40,8 @@ class Queue:
 
 
 def main():
-    size = int(input('type the maximum size of your queue: '))
-    myQueue = Queue(size)
+    max = int(input('type the maximum size of your queue: '))
+    myQueue = Queue(max)
 
     myQueue.enQueue(1)
     myQueue.deQueue()
