@@ -17,7 +17,7 @@ class priorityQueue:
         # Making an empty queue.
         self.data = [0]
         
-    def getLength() :
+    def getLength(self) :
         return len(self.data)
 
     def top(self) : # return the highest priority.
