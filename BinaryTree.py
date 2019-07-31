@@ -89,27 +89,7 @@ def getHeight(tree) :
 # 
     if tree == None :
         return 0
-    else :
-
-        # leftHeight = 1
-        # rightHeight = 1
-
-        # if tree.left != None :
-        #     leftHeight = 1 + getHeight(tree.left)
-        # else : # Be careful! Do not reference before assignment.
-        #     return leftHeight
-        
-        # if tree.right != None :
-        #     rightHeight = 1 + getHeight(tree.right)
-        # else :
-        #     return rightHeight
-
-        # if leftHeight > rightHeight :
-        #     return leftHeight
-        # else :
-        #     return rightHeight  
-        
-        
+    else :        
         leftHeight = getHeight(tree.left)
         rightHeight = getHeight(tree.right)
 
