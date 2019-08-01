@@ -16,3 +16,10 @@ def getPower(m, n) :
             return temp * temp
         else :
             return m * getPower(m, n - 1) 
+
+# convert a decimal number to a binary number.
+def convertBinary(number) :
+    if number == 1 :
+        return '1'
+    else :
+        return convertBinary(number // 2) + str(number % 2)
