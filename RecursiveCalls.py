@@ -23,3 +23,14 @@ def convertBinary(number) :
         return '1'
     else :
         return convertBinary(number // 2) + str(number % 2)
+
+# source = “mef” and target = “myself”
+# return True when target has one of each in the source.
+def hasCharacters(source, target) :
+    if len(source) <= 0 :
+        return True
+    else :
+        if source[0] in target :
+            return hasCharacters(source[1:], target)
+        else :
+            return False
