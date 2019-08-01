@@ -1,7 +1,5 @@
-# 올바른 괄호인지 판단하기
-# 본 문제에서는 입력으로 주어지는 괄호가 올바른 괄호인지를 판단하는 
-# 프로그램을 작성합니다. 예를 들어, ‘(())’ 은 올바른 괄호이지만, 
-# ‘(()))’, 혹은 ‘(()()(’ 는 올바른 괄호가 아닙니다.
+# ‘(())’ is YES. 
+# ‘(()))’ or ‘(()()(’ is NO.
 
 def checkParen(parentheses):    
     # 0. return YES if the length of the parentheses is 0 or "()"
