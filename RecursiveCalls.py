@@ -41,3 +41,13 @@ def stringReverse(string) :
         return string
     else :
         return string[-1] + stringReverse(string[1:-1]) + string[0]
+
+# In mathematics, the Euclidean algorithm, or Euclid's algorithm, is 
+# an efficient method for computing the greatest common divisor (GCD) 
+# of two numbers, the largest number that divides both of them without 
+# leaving a remainder. GCD(x, y) == GCD(y, x%y)
+def getGCD(x, y) :
+    if x % y == 0 :
+        return y
+    else :
+        return getGCD(y, x % y)
