@@ -12,7 +12,7 @@ def getPower(m, n) :
         return 1
     else :
         if n % 2 == 0 :
-            temp = m * getPower(m, n // 2)
+            temp = getPower(m, n // 2)
             return temp * temp
         else :
             return m * getPower(m, n - 1) 
