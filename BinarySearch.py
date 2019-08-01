@@ -12,6 +12,7 @@ def binarySearchWithIndices(startIndex, endIndex, targetList, item):
     
     return None
 
+
 def binarySearch(targetList, item):
     minIndex = 0
     maxIndex = len(targetList) - 1

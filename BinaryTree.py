@@ -6,7 +6,7 @@ class Tree:
 
     def addTree(self, value, left, right) :
         # 1. Find the value in the tree.
-        # 2. Make the them(left and right) tree.
+        # 2. Make them(left and right) tree.
         
         if self.root == None :
             # Set the value as root if the tree is empty.
@@ -36,10 +36,8 @@ class Tree:
             
             return False    
 
-def preorder(tree) :
-    '''
-    Root -> L -> R
-    '''
+
+def preorder(tree) : # Root -> L -> R
     result = []
     result.append(tree.root) # Root
     
@@ -51,10 +49,8 @@ def preorder(tree) :
 
     return result
 
-def inorder(tree) :
-    '''
-    L -> Root -> R
-    '''
+
+def inorder(tree) : # L -> Root -> R
     result = []
 
     if tree.left != None : # Left
@@ -67,10 +63,8 @@ def inorder(tree) :
     
     return result
 
-def postorder(tree) :
-    '''
-    L -> R -> Root
-    '''
+
+def postorder(tree) : # L -> R -> Root
     result = []
     
     if tree.left != None : # Left
@@ -83,10 +77,8 @@ def postorder(tree) :
 
     return result
 
-def getHeight(tree) :
-# 
-#   the height of the root is 1.
-# 
+
+def getHeight(tree) : #   the height of the root is 1.
     if tree == None :
         return 0
     else :        
@@ -101,7 +93,9 @@ def getHeight(tree) :
 
 def main() :
     myTree = Tree(None, None, None)
-    nodes = int(input()) # the number of the nodes
+
+    # the variable 'nodes' means that it is the number of the nodes.
+    nodes = int(input()) 
 
     for i in range(nodes) :
         myList = [int(v) for v in input().split()]
@@ -113,7 +107,7 @@ def main() :
             myList[2] = None
 
         # node      : myList, left child : myList[1], right child : myList[2]
-        # 5         : numbers
+        # 5         : nodes
 
         # 1 2 3     : root(1), left child(2), right child(3)
         # 2 4 5     : node(2), left child(4), right child(5)

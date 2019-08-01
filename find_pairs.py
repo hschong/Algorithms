@@ -1,4 +1,4 @@
-# Find 2 elements in array. those sum is 8.
+# Find 2 elements in array. their sum is 8.
 # [1, 2, 3, 9] sum = 8 : There is no elements for sum is 8.
 # [1, 2, 4, 4, 4, 4, 6, 6] sum = 8, 2 pairs[[2,6], [4,4] for sum is 8.
 # (7)
