@@ -1,4 +1,4 @@
-# 1. get an element from first to last in the input list.
+# 1. get an element from index 0 to -1 in the input list.
 # 2. add the element into a new list.
 # 3. find the kth smallest number in the new list.
 # 4. add the smallest number into the kth smallest list if found.

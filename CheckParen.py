@@ -1,11 +1,11 @@
-# ‘(())’ is YES. 
-# ‘(()))’ or ‘(()()(’ is NO.
+# if the parentheses are like ‘(())’, the program returns YES. 
+# the program return NO if the parentheses are like ‘(()))’ or ‘(()()(’.
 
 def checkParen(parentheses):    
-    # 0. return YES if the length of the parentheses is 0 or "()"
-    # 1. find an adjacent '(' and ')' in the parentheses.
+    # 0. return YES if the length of the parentheses is 0 or "()".
+    # 1. find an adjacent rounded brakets like '()' in the parentheses.
     # 2. remove them in the parentheses.
-    # 3. go to #0
+    # 3. go to step #0
     
     if len(parentheses) <= 1:
         if len(parentheses) == 0:

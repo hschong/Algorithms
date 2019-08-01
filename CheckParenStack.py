@@ -44,23 +44,12 @@ class Stack:
         else :
             return self.data[-1]
             
-# '''
-# 괄호 문자열 p의 쌍이 맞으면 "YES", 아니면  "NO"를 반환
-# '''
+def checkParen(parentheses) :
+    # parentheses = "((()())())"
 
-# '''
-# 1. p에서 인접한 괄호 '()'를 찾는다
-# 2. 찾은 '()'를 제거한다
-# 3. checkParen 에게 다시 물어 본다
-# ...
-            
-def checkParen(p) :
-    # '''
-    # p = "((()())())"
-    # '''
     myStack = Stack(CONST_STACK_MAX)
     
-    for x in p :
+    for x in parentheses :
         if x == '(' :
             if myStack.push(x) == False :
                 break
@@ -75,9 +64,10 @@ def checkParen(p) :
     else :
         return "NO"
 
+
 def main():
-    x = input()
-    print(checkParen(x))
+    parentheses = input()
+    print(checkParen(parentheses))
 
 if __name__ == "__main__":
     main()
