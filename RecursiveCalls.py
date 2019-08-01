@@ -27,10 +27,17 @@ def convertBinary(number) :
 # source = “mef” and target = “myself”
 # return True when target has one of each in the source.
 def hasCharacters(source, target) :
-    if len(source) <= 0 :
+    if len(source) == 0 :
         return True
     else :
         if source[0] in target :
             return hasCharacters(source[1:], target)
         else :
             return False
+
+# stringReverse("Elice is so coooool") == "loooooc os si ecilE" 
+def stringReverse(string) :
+    if len(string) == 1 :
+        return string
+    else :
+        return string[-1] + stringReverse(string[1:-1]) + string[0]
