@@ -3,41 +3,31 @@
 # 프로그램을 작성합니다. 예를 들어, ‘(())’ 은 올바른 괄호이지만, 
 # ‘(()))’, 혹은 ‘(()()(’ 는 올바른 괄호가 아닙니다.
 
-def checkParen(p):
-    '''
-    괄호 문자열 p의 쌍이 맞으면 "YES", 아니면  "NO"를 반환
-    '''
+def checkParen(parentheses):    
+    # 0. return YES if the length of the parentheses is 0 or "()"
+    # 1. find an adjacent '(' and ')' in the parentheses.
+    # 2. remove them in the parentheses.
+    # 3. go to #0
     
-    '''
-    1. p에서 인접한 괄호 '()'를 찾는다
-    2. 찾은 '()'를 제거한다
-    3. checkParen 에게 다시 물어 본다
-    '''
-    
-    if len(p) <= 1:
-        if len(p) == 0:
+    if len(parentheses) <= 1:
+        if len(parentheses) == 0:
             return "YES"
-        else: #'(' or ')'
+        else: #parentheses include '(' or ')'.
             return "NO"
-    elif p == "()":
+    elif parentheses == "()":
         return "YES"
         
     # find '()'  
     #'        i '
     #'((())())))'
-    for i in range(len(p)-1):
-        if p[i] == '(' and p[i+1] == ')':
-            q = p[:i] + p[i+2:]
-            
-            return checkParen(q)
+    for i in range(len(parentheses)-1):
+        if parentheses[i] == '(' and parentheses[i+1] == ')':
+            newParentheses = parentheses[:i] + parentheses[i+2:]
+            return checkParen(newParentheses)
     
     return "NO"
 
 def main():
-    '''
-    Do not change this code
-    '''
-
     x = input()
     print(checkParen(x))
 
