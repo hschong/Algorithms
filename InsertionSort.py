@@ -33,6 +33,7 @@ def insertion_sort(list):
 
     return list
 
+
 data1 = [2, 4, 5, 1, 3]
 data2 = [2, 4, 5, 1, 3]
 

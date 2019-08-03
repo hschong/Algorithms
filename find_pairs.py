@@ -1,7 +1,11 @@
-# Find 2 elements in array. their sum is 8.
-# [1, 2, 3, 9] sum = 8 : There is no elements for sum is 8.
-# [1, 2, 4, 4, 4, 4, 6, 6] sum = 8, 2 pairs[[2,6], [4,4] for sum is 8.
-# (7)
+'''
+Find 2 elements in array. their sum is 8.
+[1, 2, 3, 9], sum = 8
+--> There are no elements for the sum.
+[1, 2, 4, 4, 4, 4, 6, 6], sum = 8 
+--> 2 pairs[[2,6], [4,4] for sum is 8.
+'''
+
 import random
 
 CONST_MAX = 1000000 # 1M

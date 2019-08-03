@@ -24,6 +24,7 @@ def simple_merge_sort(list):
 
     return new_sorted_list
 
+
 # general merge sort
 def merge_sort(list):
     length = len(list)

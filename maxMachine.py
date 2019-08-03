@@ -11,6 +11,7 @@ class maxMachine:
     def getMax(self):
         return max(self.data)
 
+
 def main():
     myMachine = maxMachine()
     myMachine.addNumber(1)

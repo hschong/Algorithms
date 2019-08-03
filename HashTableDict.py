@@ -1,4 +1,4 @@
-class HashTable : # Using a dictionary to implement a hashtable.
+class HashTable : # Using a dictionary.
     def __init__(self) :
         self.data = {}
 

@@ -5,6 +5,7 @@ def getMaxSum(numbers) :
 
     for start in range(0, length) :
         for end in range(start, length) :
+            # all cases n x (n-1)/2
             tempSum = 0
 
             for i in range(start, end+1) :

@@ -1,5 +1,4 @@
 # Dijkstra's algorithm
-
 graph = {}
 graph["Start"] = {}
 graph["Start"]["A"] = 6
@@ -43,6 +42,7 @@ def find_lowest_cost_node(costs_from_start):
 
 
 node = find_lowest_cost_node(costs_from_start)
+
 
 while node is not None:
     lowest_cost = costs_from_start[node]

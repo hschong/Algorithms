@@ -43,17 +43,19 @@ class LinkedListPipe:
 
 
 def processBeads(myInput):
-    # myInput[i][0] : Elements' index
-    # myInput[i][1] : Direction to add, 0 : left, 1 : right
+    '''
+    myInput[i][0] : Elements' index
+    myInput[i][1] : Direction to add, 0 : left, 1 : right
 
-    # myInput[0][0] = 1, myInput[0][1] = 0,
-    # myInput[1][0] = 2, myInput[1][1] = 1,
-    # myInput[2][0] = 3, myInput[2][1] = 0
+    myInput[0][0] = 1, myInput[0][1] = 0,
+    myInput[1][0] = 2, myInput[1][1] = 1,
+    myInput[2][0] = 3, myInput[2][1] = 0
 
-    # myInput[0] = ball = [1, 0]
-    # myInput[1] = ball = [2, 1]
-    # myInput[2] = ball = [3, 0]
-    # [[1,0], [2,1], [3,0]]
+    myInput[0] = ball = [1, 0]
+    myInput[1] = ball = [2, 1]
+    myInput[2] = ball = [3, 0]
+    [[1,0], [2,1], [3,0]]
+    '''
 
     myPipe = LinkedListPipe()
     result = []
@@ -77,14 +79,17 @@ def main():
 
     print(*processBeads(myList))
 
+
 if __name__ == "__main__":
     main()
 
-# Input sample
-# 3
-# 1 0
-# 2 1
-# 3 0
+'''
+Input sample
+3
+1 0
+2 1
+3 0
 
-# Output sample
-# 3 1 2
+Output sample
+3 1 2
+'''

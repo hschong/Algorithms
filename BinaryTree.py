@@ -94,11 +94,21 @@ def getHeight(tree) : #   the height of the root is 1.
 def main() :
     myTree = Tree(None, None, None)
 
-    # the variable 'nodes' means that it is the number of the nodes.
+    '''
+    the variable 'nodes' means that it is 
+    the number of the nodes.
+    5         : nodes
+
+    1 2 3     : root(1), left child(2), right child(3)
+    2 4 5     : node(2), left child(4), right child(5)
+    3 -1 -1   : node(3), no child
+    4 -1 -1   : node(4), no child
+    5 -1 -1   : node(5), no child
+    '''    
     nodes = int(input()) 
 
     for i in range(nodes) :
-        myList = [int(v) for v in input().split()]
+        myList = [int(node) for node in input().split()]
 
         if myList[1] == -1 :
             myList[1] = None
@@ -106,26 +116,13 @@ def main() :
         if myList[2] == -1 :
             myList[2] = None
 
-        # node      : myList, left child : myList[1], right child : myList[2]
-        # 5         : nodes
-
-        # 1 2 3     : root(1), left child(2), right child(3)
-        # 2 4 5     : node(2), left child(4), right child(5)
-        # 3 -1 -1   : node(3), no child
-        # 4 -1 -1   : node(4), no child
-        # 5 -1 -1   : node(5), no child
-        
-        # 1 2 3
-        # 2 4 5
-        # 3 -1 -1
-        # 4 -1 -1
-        # 5 -1 -1
         myTree.addTree(myList[0], myList[1], myList[2])
 
     print(*preorder(myTree))
     print(*inorder(myTree))
     print(*postorder(myTree))
     print(getHeight(myTree))
+
 
 if __name__ == "__main__":
     main()

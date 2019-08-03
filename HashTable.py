@@ -18,8 +18,12 @@ class HashTable : # Using a list to implement a hash table.
                 # It is not empty. check the availablity of the next element.
                 index = (index + 1) % len(self.myData)
         
-        # It is impossible to do put function due to Hash table is full.
-        # The program should increase the size of the table to do put function.
+        '''
+        It is impossible to do put function due to 
+        Hash table is full.
+        The program should increase the size of the table
+        to do put function.
+        '''
         return False
 
     def get(self, key) :
@@ -42,6 +46,7 @@ class HashTable : # Using a list to implement a hash table.
 
     def hashFunction(self, key) :        
         return key % len(self.myData)
+
 
 def main():
     myHash = HashTable(100)
