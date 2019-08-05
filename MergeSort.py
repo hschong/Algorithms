@@ -68,8 +68,44 @@ def merge_sort(list):
     return list
 
 
+def mergeSort(numbers) :
+    size = len(numbers)
+    if size == 1 :
+        return numbers
+
+    mid = size // 2
+    leftNumbers = mergeSort(numbers[:mid])
+    rightNumbers = mergeSort(numbers[mid:])
+
+    return merge(leftNumbers, rightNumbers)
+
+
+def merge(leftNumbers, rightNumbers) :
+    p = 0 # current index of left
+    q = 0 # current index of right
+    leftSize = len(leftNumbers)
+    rightSize = len(rightNumbers)
+
+    result = []
+    while p<leftSize and q<rightSize :
+        if leftNumbers[p] < rightNumbers[q] :
+            result.append(leftNumbers[p])
+            p += 1
+        else :
+            result.append(rightNumbers[q])
+            q += 1
+    
+    if p == leftSize :
+        result += rightNumbers[q:]
+    else :
+        result += leftNumbers[p:]
+    
+    return result
+
+
 list = [6, 8, 3, 9, 10, 1, 2, 4, 7, 5]
 print(simple_merge_sort(list))
 print(merge_sort(list))
+print(mergeSort(list))
 
 
