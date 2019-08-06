@@ -3,23 +3,29 @@ class HashTable : # Using a list to implement a hash table.
         # self.myData = [(-1, -1) for i in range(size)]
         self.myData = []
         for i in range(size):
-            self.myData.append([-1, -1]) # [-1, -1] means that the program assigns a key with a value into the element.
+            '''
+            [-1, -1] means that the program assigns 
+            a key with a value into the element 
+            which belongs to myData as an element.    
+            '''
+            self.myData.append([-1, -1]) 
+
 
     def put(self, key, value) :
         index = self.hashFunction(key)
         
         for i in range(len(self.myData)) :
             if self.myData[index][0] == -1 : 
-                # It is empty bacause there is no key in the element.
+                # The list is empty bacause there is no key in the element.
                 self.myData[index] = (key, value)
                 return True
 
             else :
-                # It is not empty. check the availablity of the next element.
+                # The list is not empty. check the availablity of the next element in the hash table.
                 index = (index + 1) % len(self.myData)
         
         '''
-        It is impossible to do put function due to 
+        It is impossible to do PUT function due to 
         Hash table is full.
         The program should increase the size of the table
         to do put function.
