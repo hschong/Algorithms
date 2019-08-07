@@ -2,6 +2,8 @@ class HashTable : # Using a list to implement a hash table.
     def __init__(self, size) :
         # self.myData = [(-1, -1) for i in range(size)]
         self.myData = []
+        self.size = -1
+
         for i in range(size):
             '''
             [-1, -1] means that the program assigns 
@@ -9,23 +11,54 @@ class HashTable : # Using a list to implement a hash table.
             which belongs to myData as an element.    
             '''
             self.myData.append([-1, -1]) 
+        
+        self.setSizeOfHash()
 
+    def getSizeOfHash(self) :
+        return self.size
+
+    def setSizeOfHash(self) :
+        self.size = len(self.myData)
+
+    def getPrimeNumber(self) :
+        size = self.getSizeOfHash()
+        #  Find a prime number and must be smaller than 'size'.
+        primeNumber = -1 
+        for i in range(2, size) :
+            if size % i == 0 :
+                primeNumber = i
+        
+        return primeNumber
 
     def put(self, key, value) :
-        index = self.hashFunction(key)
+        hashCode = self.hashFunction(key)
+        size = self.getSizeOfHash
         
         for i in range(len(self.myData)) :
-            if self.myData[index][0] == -1 : 
-                # The list is empty bacause there is no key in the element.
-                self.myData[index] = (key, value)
+            if self.myData[hashCode][0] == -1 : 
+                # The element in the list is empty.
+                self.myData[hashCode] = (key, value)
                 return True
 
             else :
-                # The list is not empty. check the availablity of the next element in the hash table.
-                index = (index + 1) % len(self.myData)
+                '''
+                The element is occupied. But a collision was found.
+                There are 2 ways to avoid the collision by Linear Probing 
+                or Double Hashing. 
+                Note) hashCode has to be smaller than the size. 
+                '''
+                
+                '''
+                Linear Probing
+                hashCode = (hashCode + 1) % size
+                '''
+
+                # DoubleHashing
+                jump = self.hashFunctionByDoubleHashing(key)
+                hashCode = (hashCode + jump) % size
         
         '''
-        It is impossible to do PUT function due to 
+        It is impossible to do 'put' function due to 
         Hash table is full.
         The program should increase the size of the table
         to do put function.
@@ -33,25 +66,39 @@ class HashTable : # Using a list to implement a hash table.
         return False
 
     def get(self, key) :
-        index = self.hashFunction(key)
-        
-        if self.myData[index][0] == -1 :
-            # the element is empty with the given index.
-                return -1
+        hashCode = self.hashFunction(key)
+        size = self.getSizeOfHash()
 
-        for i in range(len(self.myData)) :
-            if self.myData[index][0] == key :
-                # Found the value with the key.
-                return self.myData[index][1]
+        if self.myData[hashCode][0] == -1 :
+            # No element matching with the given hashCode.
+                return None
+
+        # Found the element matching with hashCode.
+        for i in range(size) :
+            if self.myData[hashCode][0] == key :
+                # Found the element matching with the key.
+                return self.myData[hashCode][1]
             else :
-                # Move to the next element.
-                index = (index + 1) % len(self.myData)
-        
-        # There is no value with/matching with the key.
-        return -1
+                '''
+                Found a collision. Avoiding a collision by 
+                Linear Probing or Double Hashing.
+                ''' 
 
+                # Linear Probing
+                # hashCode = (hashCode + 1) % size
+                
+                # DoubleHashing
+                jump = self.hashFunctionByDoubleHashing(key)
+                hashCode = (hashCode + jump) % size
+        
+        # There is no element matching with the key.
+        return None
+    
     def hashFunction(self, key) :        
-        return key % len(self.myData)
+        return key % self.getSizeOfHash()
+
+    def hashFunctionByDoubleHashing(self, key) :
+        return 1 + key % self.getPrimeNumber()
 
 
 def main():
