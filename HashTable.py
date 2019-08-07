@@ -1,19 +1,16 @@
 class HashTable : # Using a list to implement a hash table.
     def __init__(self, size) :
-        # self.myData = [(-1, -1) for i in range(size)]
         self.myData = []
-        self.size = -1
-
-        for i in range(size):
-            '''
-            [-1, -1] means that the program assigns 
-            a key with a value into the element 
-            which belongs to myData as an element.    
-            '''
-            self.myData.append([-1, -1]) 
-        
+        self.size = 0
+        self.initHashTable(size) 
         self.setSizeOfHash()
-
+        
+    def initHashTable(self, size) :
+        # [key, value]    
+        # self.myData = [(None, None) for i in range(size)]
+        for i in range(size):
+            self.myData.append([None, None])
+                
     def getSizeOfHash(self) :
         return self.size
 
@@ -21,9 +18,11 @@ class HashTable : # Using a list to implement a hash table.
         self.size = len(self.myData)
 
     def getPrimeNumber(self) :
-        size = self.getSizeOfHash()
         #  Find a prime number and must be smaller than 'size'.
-        primeNumber = -1 
+        size = self.getSizeOfHash()
+        if size <= 2 :
+            return None
+        
         for i in range(2, size) :
             if size % i == 0 :
                 primeNumber = i
@@ -35,8 +34,8 @@ class HashTable : # Using a list to implement a hash table.
         size = self.getSizeOfHash
         
         for i in range(len(self.myData)) :
-            if self.myData[hashCode][0] == -1 : 
-                # The element in the list is empty.
+            if self.myData[hashCode][0] == None : 
+                # The element is empty.
                 self.myData[hashCode] = (key, value)
                 return True
 
@@ -58,10 +57,10 @@ class HashTable : # Using a list to implement a hash table.
                 hashCode = (hashCode + jump) % size
         
         '''
-        It is impossible to do 'put' function due to 
-        Hash table is full.
+        Hash table is full or does not have any available 
+        element with the hashCode.
         The program should increase the size of the table
-        to do put function.
+        to do 'put' function.
         '''
         return False
 
@@ -69,10 +68,9 @@ class HashTable : # Using a list to implement a hash table.
         hashCode = self.hashFunction(key)
         size = self.getSizeOfHash()
 
-        if self.myData[hashCode][0] == -1 :
-            # No element matching with the given hashCode.
-                return None
-
+        if self.myData[hashCode][0] == None :
+            return None
+        
         # Found the element matching with hashCode.
         for i in range(size) :
             if self.myData[hashCode][0] == key :
@@ -94,6 +92,20 @@ class HashTable : # Using a list to implement a hash table.
         # There is no element matching with the key.
         return None
     
+    def delete(self, key) :
+        hashCode = self.hashFunction(key)
+        size = self.getSizeOfHash()
+
+        for i in range(size) :
+            if self.myData[hashCode][0] == key :
+                self.myData[hashCode] = (-1, None)
+                return True
+            else :     
+                jump = self.hashFunctionByDoubleHashing(key)
+                hashCode = (hashCode + jump) % size
+
+        return False
+
     def hashFunction(self, key) :        
         return key % self.getSizeOfHash()
 
