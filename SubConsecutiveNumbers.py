@@ -24,7 +24,7 @@ n개의 숫자에 대하여 연속 부분 최대합을 출력한다.
 import math
 
 # Using Brute-force. O(n x n x n)
-def getMaxSubArraySum(numbers) : 
+def getMaxSubArraySum1(numbers) : 
     maxSum = -math.inf
     length = len(numbers)
 
@@ -46,15 +46,15 @@ Using Divide and Conquer like merge sort. O(nlog n)
 Algorithm I 3. Divide and Conquer II.mp4
 get max sub sum in consecutive numbers.
 '''
-def findMaxSubArraySum(numbers) :
+def getMaxSubArraySum2(numbers) :
     length = len(numbers)
     if length == 1 :
         return numbers[0]
     
     mid = length // 2
     # Largest Sum Contiguous Subarray
-    LSCSInLeft = findMaxSubArraySum(numbers[:mid])
-    LSCSInRight = findMaxSubArraySum(numbers[mid:]) 
+    LSCSInLeft = getMaxSubArraySum2(numbers[:mid])
+    LSCSInRight = getMaxSubArraySum2(numbers[mid:]) 
     LSCSInMiddle = 0
     leftMaxSum = 0 
     rightMaxSum = 0
@@ -75,7 +75,7 @@ def findMaxSubArraySum(numbers) :
 
 
 # Kadane’s Algorithm
-def getMaxSubArraySum(numbers): 
+def getMaxSubArraySum3(numbers): 
     max_so_far = 0
     max_ending_here = 0
     length = len(numbers)
@@ -93,8 +93,9 @@ def getMaxSubArraySum(numbers):
 
 def main():
     numbers = [int(x) for x in input().split()]
-    print(findMaxSubArraySum(numbers))
-    print(getMaxSubArraySum(numbers))
+    print(getMaxSubArraySum1(numbers))
+    print(getMaxSubArraySum2(numbers))
+    print(getMaxSubArraySum3(numbers))
     
 
 if __name__ == "__main__":
