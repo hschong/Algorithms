@@ -1,171 +1,154 @@
+PRIME = 7  # PRIME < self.max
+DELETED = -1
+
 class HashTable : # Using a list to implement a hash table.
-    def __init__(self, maxSize) :
-        self.myData = []
-        self.maxSize = maxSize
-        self.occupiedSize = 0
-        self.deletedSize = 0
-        self.initHashTable(maxSize)
+    def __init__(self, max) :
+        self.data = []
+        self.max = max
+        self.occupied_size = 0
+        self.mark_as_deleted_size = 0
+        self.makeHashTable(max)
         
-    def initHashTable(self, maxSize) :
-        # [key, value]    
-        # self.myData = [(None, None) for i in range(maxSize)]
-        for i in range(maxSize):
-            self.myData.append([None, None])
-    
-    def getMaxSize(self) :
-        return self.maxSize
+    def makeHashTable(self, max) :
+        for i in range(max):
+            # [key, value]    
+            # self.data = [(None, None) for i in range(max)]
+            self.data.append([None, None])
 
-    def setMaxSize(self, newSize) :
-        self.maxSize = newSize
+    def getCurSize(self) :
+        return self.occupied_size + self.mark_as_deleted_size
 
-    def getPrimeNumber(self) :
-        #  Find a prime number and must be smaller than 'size'.
-        size = self.getMaxSize()
-        if size <= 2 :
-            return None
-        
-        for i in range(2, size) :
-            if size % i == 0 :
-                primeNumber = i
-        
-        return primeNumber
+    def isFull(self) :
+        if self.max == self.getCurSize():
+            return True
+        else :
+            return False
+
+    def isEmpty(self) :
+        if self.occupied_size == 0 :
+            return True
+        else :
+            return False
+
+    def getHashCode1(self, key) :        
+        return key % self.max
+
+    def getHashCode2(self, key) :
+        # Double Hashing
+        return PRIME - (key % PRIME)
 
     def put(self, key, value) :
-        hashCode = self.hashFunction(key)
-        size = self.getMaxSize()
+        if self.isFull() == True :
+            return False
+
+        hashCode = self.getHashCode1(key)
+        max = self.max
         
-        for i in range(size) :
-            if self.myData[hashCode][0] == None : 
+        for i in range(1, max+1) :
+            if self.data[hashCode][0] == None : 
                 # The element is empty.
-                self.myData[hashCode] = (key, value)
-                self.occupiedSize += 1
+                self.data[hashCode] = (key, value)
+                self.occupied_size += 1
                 return True
 
-            elif self.myData[hashCode][0] == -1 :
+            elif self.data[hashCode][0] == DELETED :
                 # The element is marked as deleted.
-                self.myData[hashCode] = (key, value)
-                self.deletedSize -= 1
+                self.data[hashCode] = (key, value)
+                self.mark_as_deleted_size -= 1
+                self.occupied_size += 1
                 return True
 
             else :
                 '''
-                The element is occupied. But a collision was found.
-                There are 2 ways to avoid the collision by Linear Probing 
-                or Double Hashing. 
-                Note) hashCode has to be smaller than the size. 
+                A collision was found. There are 2 ways to avoid the collision by Linear Probing or Double Hashing. 
+                Note) hashCode has to be smaller than the max. 
                 '''
+                # Linear Probing
+                # hashCode = (hashCode + 1) % max
                 
-                '''
-                Linear Probing
-                hashCode = (hashCode + 1) % size
-                '''
                 # DoubleHashing
-                jump = self.hashFunctionByDoubleHashing(key)
-                hashCode = (hashCode + jump) % size
+                hashCode2 = self.getHashCode2(key)
+                hashCode = (hashCode + i * hashCode2) % max
         
         '''
-        Hash table is full or does not have any available 
-        element with the hashCode.
-        The program should increase the size of the table
-        to do 'put' function.
+        Hash table does not have any available element with the hashCode.
+        The program should increase the max of the table to do 'put' function.
         '''
         return False
 
     def get(self, key) :
-        hashCode = self.hashFunction(key)
-        size = self.getMaxSize()
+        if self.isEmpty() == True :
+            return False
+        
+        hashCode = self.getHashCode1(key)
 
-        if self.myData[hashCode][0] == None :
+        if self.data[hashCode][0] == None :
             return None
         
         # Found the element matching with hashCode.
-        for i in range(size) :
-            if self.myData[hashCode][0] == key :
+        for i in range(1, self.max+1) :
+            if self.data[hashCode][0] == key :
                 # Found the element matching with the key.
-                return self.myData[hashCode][1]
+                return self.data[hashCode][1]
             else :
                 '''
                 Avoiding a collision by Linear Probing or Double Hashing When found a collision. 
                 ''' 
-
                 # Linear Probing
-                # hashCode = (hashCode + 1) % size
+                # hashCode = (hashCode + 1) % self.max
                 
                 # DoubleHashing
-                jump = self.hashFunctionByDoubleHashing(key)
-                hashCode = (hashCode + jump) % size
+                hashCode = (hashCode + i * self.getHashCode2(key)) % self.max
         
         # There is no element matching with the key.
         return None
     
     def delete(self, key) :
-        hashCode = self.hashFunction(key)
-        size = self.getMaxSize()
-
-        for i in range(size) :
-            if self.myData[hashCode][0] == key :
+        if self.isEmpty() == True :
+            return False
+            
+        hashCode = self.getHashCode1(key)
+        for i in range(1, self.max+1) :
+            if self.data[hashCode][0] == key :
                 # Marking the element as deleted.
-                self.myData[hashCode] = (-1, None)
-                self.deletedSize += 1
+                self.data[hashCode] = (DELETED, None)
+                self.mark_as_deleted_size += 1
+                self.occupied_size -= 1
                 return True
             else :
-                jump = self.hashFunctionByDoubleHashing(key)
-                hashCode = (hashCode + jump) % size
+                hashCode2 = self.getHashCode2(key)
+                hashCode = (hashCode + i * hashCode2) % self.max
 
         return False
 
-    def hasCollision(self, hashCode, key) :
-        if self.myData[hashCode][0] == key :
+    def rebuild(self, max) :
+        if max < self.max :
             return False
-        else :
-            return True
 
-    def resize(self) :
-        maxSize = self.getMaxSize()
-        newSize = maxSize + maxSize // 2
-        self.rebuild(newSize)
+        new_data = self.data
+        self.data.clear()
+        self.makeHashTable(max)
 
-        return True
+        for key, value in new_data :
+            if key != DELETED and key != None :
+                self.put(key, value)
 
-    def rebuild(self, newSize) :
-        newData = []
-        maxSize = self.getMaxSize()
-        size = maxSize
-        isNew = False
-
-        if newSize > maxSize :
-            size = newSize
-            self.initHashTable(size)
-            isNew = True
-        
-        # newData = self.makeNewList(newData, size)
-        self.myData = newData
         return True
 
     def refresh(self) :
-        maxSize = self.getMaxSize()
-        occupiedSize = self.occupiedSize
-        deletedSize = self.deletedSize
-
-        if occupiedSize >= ((maxSize*7)//10) :
+        if self.occupied_size >= ((self.max*7)//10) :
             # over 70%
-            if deletedSize >= (maxSize//10) :
+            if self.mark_as_deleted_size >= (self.max//10) :
                 # remove the deleted marks and rebuild.
-                return self.rebuild(0)
+                return self.rebuild(self.max)
             else :
-                # increase the maximum hash size 50% more.
-                return self.resize()
+                # increase the max 100%
+                return self.rebuild(self.max * 2)
 
-        elif deletedSize >= ((maxSize*2)//10) :
-            return self.rebuild(0)
+        elif self.mark_as_deleted_size >= ((self.max * 2)//10) :
+            return self.rebuild(self.max)
 
         return True
-
-    def hashFunction(self, key) :        
-        return key % self.getMaxSize()
-
-    def hashFunctionByDoubleHashing(self, key) :
-        return 1 + key % self.getPrimeNumber()
 
 
 def main():
