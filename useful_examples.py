@@ -15,6 +15,12 @@ mylist.append('1')
 mylist.remove('1')
 mylist.reverse()
 
+# remove all elements in list.
+mylist.clear()  # Python 3.3+
+del mylist[:]
+mylist[:] = []
+mylist *= 0
+
 # for in loop
 for item in mylist:
     print(item)
