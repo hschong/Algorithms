@@ -2,6 +2,7 @@
 2 x n 의 상자를 2 x 1 의 블럭으로 채우는 경우의 수를 
 1,000,000,007로 나눈 나머지를 반환하는 함수를 작성하세요.
 '''
+LIMIT_NUMBER = 1000000007
 
 def fillBox(n) :
   '''
@@ -19,7 +20,7 @@ def fillBox(n) :
   Table[2] = 2
 
   for i in range(3, n+1):
-    Table[i] = (Table[i-1] + Table[i-2]) % 1000000007
+    Table[i] = (Table[i-1] + Table[i-2]) % LIMIT_NUMBER
 
   return Table[n]
 
