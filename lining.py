@@ -1,4 +1,5 @@
 '''
+Dynamic Programming
 줄 세우기
 
 엘리스 초등학교에서는 합창 대회에 출전하기 위한 학생 n명을 선발중이다. 
@@ -39,32 +40,38 @@ n명의 학생을 배치하는 경우의 수를 구하는 프로그램을 작성
 예제 설명
 아래와 같이 13가지의 경우가 있다.
 
-Q Q Q Q Q
-Q Q Q Q P
-Q Q Q P Q
-Q Q P Q Q
-Q P Q Q Q
-P Q Q Q Q
-Q Q P Q P
-Q P Q Q P
-P Q Q Q P
-Q P Q P Q
-P Q Q P Q
-P Q P Q Q
-P Q P Q P
+Q Q Q Q Q   Q Q Q Q P   Q Q Q P Q   Q Q P Q Q   Q P Q Q Q   
+P Q Q Q Q   Q Q P Q P   Q P Q Q P   P Q Q Q P   Q P Q P Q   
+P Q Q P Q   P Q P Q Q   P Q P Q P
+
 '''
 
 
 import sys
+
+LIMIT_NUMBER = 1000000007
 
 
 def lining(n):
     '''
     n명의 학생을 일렬로 줄세우는 경우의 수를 1,000,000,007 로 나눈 
     나머지를 반환하는 함수를 작성하세요.
-    '''
 
-    return 0
+
+    T(i) : i명의 학생을 일렬로 세우는 경우의 수
+    P로 시작 시 다음에 무조건 Q가 와야 함 => PQ + T(i-2)
+    Q로 시작 시 다음에 아무거나 와도 됨 => Q + T(i-1)
+
+    T(i) = T(i-1) + T(i-2)
+    '''
+    Table = [0 for i in range(n+1)]
+    Table[1] = 2
+    Table[2] = 3
+
+    for i in range(3, n+1):
+        Table[i] = (Table[i-1] + Table[i-2]) % LIMIT_NUMBER
+
+    return Table[n]
 
 
 def main():

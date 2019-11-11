@@ -116,7 +116,7 @@ def getLSCSByKadane(numbers):
 
 '''
 Dynamic Programming
-T(i) i(index)번째 숫자를 오른쪽 끝으로 하는 연속 부분 최대합
+T(i) : i(index)번째 숫자를 오른쪽 끝으로 하는 연속 부분 최대합
 T(i) = max(T(i-1) + numbers[i], numbers[i])
 '''
 
