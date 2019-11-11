@@ -1,12 +1,12 @@
-class LinkedListElement :
-    def __init__(self, data, prev, next) :
+class LinkedListElement:
+    def __init__(self, data, prev, next):
         self.data = data
         self.next = next
         self.prev = prev
 
 
-class OrderManger :
-    def __init__(self) :
+class OrderManger:
+    def __init__(self):
         self.start = None
         self.end = None
 
@@ -14,75 +14,75 @@ class OrderManger :
         self.orderHash = {}
 
     # targetOrder <--> (newOrder) <--> targetOrder.next
-    def addOrderAfter(self, newID, targetID) :
+    def addOrderAfter(self, newID, targetID):
         targetOrder = self.orderHash[targetID]
         newOrder = LinkedListElement(newID, targetOrder, targetOrder.next)
 
         targetOrder.next.prev = newOrder
         targetOrder.next = newOrder
-        
+
         self.orderHash[newID] = newOrder
-    
+
     # targetOrder.prev <--> (newOrder) <--> targetOrder
-    def addOrderBefore(self, newID, targetID) :
+    def addOrderBefore(self, newID, targetID):
         targetOrder = self.orderHash[targetID]
         newOrder = LinkedListElement(newID, targetOrder.prev, targetOrder)
 
         targetOrder.prev.next = newOrder
         targetOrder.prev = newOrder
-        
+
         self.orderHash[newID] = newOrder
 
     # Add an order after the self.end.
-    def appendOrder(self, orderID) :
+    def appendOrder(self, orderID):
         newOrder = LinkedListElement(orderID, None, None)
 
-        if self.begin == None :
+        if self.begin == None:
             self.begin = newOrder
             self.end = newOrder
-        else :
+        else:
             self.end.next = newOrder
             newOrder.prev = self.end
             self.end = newOrder
 
         self.orderHash[orderID] = newOrder
 
-    def removeOrder(self, orderID) :
+    def removeOrder(self, orderID):
         order = self.orderHash[orderID]
 
-        if order is None :
+        if order is None:
             return False
-        
-        else :
+
+        else:
             prevOrder = order.prev
             nextOrder = order.next
 
-            if prevOrder != None :
+            if prevOrder != None:
                 prevOrder.next = order.next
 
-            if nextOrder != None :
+            if nextOrder != None:
                 nextOrder.prev = order.prev
 
-            if order is self.begin :
+            if order is self.begin:
                 self.begin = nextOrder
 
-            if order is self.end :
+            if order is self.end:
                 self.end = prevOrder
 
             del self.orderHash[orderID]
             return True
 
     # Order prioity
-    def getOrder(self, orderId) :
+    def getOrder(self, orderId):
         count = 1
         current = self.begin
 
-        while current != None :
-            if orderId == current.data :
+        while current != None:
+            if orderId == current.data:
                 return count
-            else :
+            else:
                 count += 1
-                current = current.next 
+                current = current.next
 
         return -1
 

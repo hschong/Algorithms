@@ -19,31 +19,32 @@ ex) numbers = [1, -3, 4, 5, -2]
 
 import sys
 
-def getPowerSet(n, k) :
-    if n == k :
-        return [ [k] ]
-    else :
-        nth_after_k = [ [k] ]
+
+def getPowerSet(n, k):
+    if n == k:
+        return [[k]]
+    else:
+        nth_after_k = [[k]]
         sth_after_k = []
-        
-        for i in range(k+1, n+1) :
+
+        for i in range(k+1, n+1):
             sth_after_k = sth_after_k + getPowerSet(n, i)
-    
-        for i in range(len(sth_after_k)) :
+
+        for i in range(len(sth_after_k)):
             sth_after_k[i] = [k] + sth_after_k[i]
-            
+
         return nth_after_k + sth_after_k
 
 
-def powerSet(n) :
+def powerSet(n):
     result = []
-    for i in range(1, n+1) :
+    for i in range(1, n+1):
         result = result + getPowerSet(n, i)
-    
+
     return result
 
 
-def minimizeDifferenceBetween2Groups(numbers) :
+def minimizeDiffBtw2Groups(numbers):
     '''
     Big O(n x 2 to the power of n)
     square: 2 x 2
@@ -56,23 +57,24 @@ def minimizeDifferenceBetween2Groups(numbers) :
     combinations = powerSet(len(numbers))
     totalSum = sum(numbers)
     result = 908324897092234
-    
-    for p in combinations :
+
+    for p in combinations:
         sumGroupA = 0
 
-        for i in p :
+        for i in p:
             # an element of the p starts from 1.
-            sumGroupA += numbers[i-1] 
-        
+            sumGroupA += numbers[i-1]
+
         sumGroupB = totalSum - sumGroupA
         result = min(result, abs(sumGroupA - sumGroupB))
-    
+
     return result
 
 
 def main():
     numbers = [int(x) for x in input().split()]
-    print(minimizeDifferenceBetween2Groups(numbers))
+    print(minimizeDiffBtw2Groups(numbers))
+
 
 if __name__ == "__main__":
     main()
