@@ -56,7 +56,7 @@ def getFavoriteMenu(foodScoresDuringTheDays):
     days = len(foodScoresDuringTheDays)
     Table = [[0 for i in range(3)] for j in range(days)]
 
-    # Base conditions
+    # Base cases
     Table[0][0] = foodScoresDuringTheDays[0][0]
     Table[0][1] = foodScoresDuringTheDays[0][1]
     Table[0][2] = foodScoresDuringTheDays[0][2]

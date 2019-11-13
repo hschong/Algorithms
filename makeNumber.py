@@ -30,7 +30,7 @@ def makeNumber(n, m):
     Table = [0 for i in range(n+1)]
 
     '''
-  Base conditions
+  Base cases
   m = 3, T[1] T[2] ... T[m] 
   '''
     for i in range(1, m+1):

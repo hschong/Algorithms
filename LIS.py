@@ -57,7 +57,7 @@ def LIS(numbers):
     length = len(numbers)
     Table = [0 for i in range(length)]
 
-    # Base condition
+    # Base case
     Table[0] = 1
     for i in range(1, length):
         Table[i] = 1
