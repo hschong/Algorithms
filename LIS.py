@@ -43,7 +43,7 @@ def LIS(numbers):
     T[i] = max(T[j] + 1) if numbers[j] < numbers[i]
 
     ex)
-    2 5 3 4 6 1
+    2 5 3 4 6 1 
     T[0] = 1, [2]
     T[1] = 2, [2, 5]
     T[2] = 2, [2, 3]
@@ -55,13 +55,14 @@ def LIS(numbers):
     '''
 
     length = len(numbers)
-    Table = [0 for i in range(length)]
+    '''
+    Base case
+    최솟값 설정
+    5 4 3 2 1 시 최소 값을 1로 설정 
+    '''
+    Table = [1 for i in range(length)]
 
-    # Base case
-    Table[0] = 1
-    for i in range(1, length):
-        Table[i] = 1
-
+    for i in range(0, length):
         for j in range(0, i):
             if numbers[j] < numbers[i]:
                 Table[i] = max(Table[i], Table[j] + 1)
