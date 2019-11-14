@@ -51,7 +51,7 @@ def LIS(numbers):
     T[4] = 4, [2, 3, 4, 6]
     T[5] = 1, [1]
     max(T) = 4
-    O(N²)
+    O(n²)
     '''
 
     length = len(numbers)
