@@ -43,11 +43,11 @@ def LCS(s1, s2):
 
     s1_len = len(s1)
     s2_len = len(s2)
-    Table = [[0 for j in range(-1, s2_len)] for i in range(-1, s1_len)]
+    Table = [[0 for j in range(s2_len+1)] for i in range(s1_len+1)]
 
-    for i in range(0, s1_len):
-        for j in range(0, s2_len):
-            if s1[i] == s2[j]:
+    for i in range(1, s1_len+1):
+        for j in range(1, s2_len+1):
+            if s1[i-1] == s2[j-1]:
                 Table[i][j] = Table[i-1][j-1] + 1
             else:
                 Table[i][j] = max(Table[i][j-1], Table[i-1][j])
