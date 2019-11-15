@@ -2,8 +2,9 @@
 mylist = []
 
 # Sort the items.
-mylist.sort() # Sort the items of the list in place.
-newList = sorted(mylist) # Return a new sorted list from the items in iterable.
+mylist.sort()  # Sort the items of the list in place.
+# Return a new sorted list from the items in iterable.
+newList = sorted(mylist)
 
 # Remove Duplicates From a List.
 mylist = ["a", "b", "a", "c", "c"]
@@ -37,3 +38,11 @@ if 'a' not in mylist:
     print(-1)
 else:
     print(mylist.index('a'))
+
+
+def reverseString(x):
+    return x[::-1]
+
+
+mytxt = reverseString("I wonder how this text looks like backwards")
+print(mytxt)
