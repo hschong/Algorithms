@@ -70,22 +70,26 @@ def isValid(groupMap, i, j):
         return False
 
 
-def findStudents(groupMap, visited, i, j):
-    '''
-    groupMap(i, j)에 있는 학생과 같은 편인 학생의 수를 반환하고 visited에 True로 설정
+def getStudentsByDFS(groupMap, visited, i, j):
 
-    Using BFS
+    return 0
+
+
+def getStudentsByBFS(groupMap, visited, i, j):
+    '''
     1. Queue에다가 시작점을 enqueue, BFS 시작!
     2. Queue에서 dequeue, 현재 내가 있는 위치
     3. 내 위치에서 인접한 정점 중 방문하지 않은 점점을 모두 enqueu
     4. goto 2. 로 돌아간다.
-
     '''
-    myQueue = queue.Queue()
-    myQueue.put((i, j))
-
-    visited[i][j] = True
     numStudents = 0
+    myQueue = queue.Queue()
+
+    myQueue.put((i, j))
+    visited[i][j] = True
+
+    # Above -> Left -> Right -> below
+    direction = [[-1, 0], [0, -1], [0, 1], [1, 0]]
 
     while not myQueue.empty():
         current = myQueue.get()
@@ -94,24 +98,23 @@ def findStudents(groupMap, visited, i, j):
         i = current[0]
         j = current[1]
 
-        # Above -> Left -> Right -> below
-        if isValid(groupMap, i-1, j) and groupMap[i-1][j] == 1 and visited[i-1][j] == False:
-            myQueue.put((i-1, j))
-            visited[i-1][j] = True
+        for x, y in direction:
+            x = i + x
+            y = j + y
 
-        if isValid(groupMap, i, j-1) and groupMap[i][j-1] == 1 and visited[i][j-1] == False:
-            myQueue.put((i, j-1))
-            visited[i][j-1] = True
-
-        if isValid(groupMap, i, j+1) and groupMap[i][j+1] == 1 and visited[i][j+1] == False:
-            myQueue.put((i, j+1))
-            visited[i][j+1] = True
-
-        if isValid(groupMap, i+1, j) and groupMap[i+1][j] == 1 and visited[i+1][j] == False:
-            myQueue.put((i+1, j))
-            visited[i+1][j] = True
+            if isValid(groupMap, x, y) and groupMap[x][y] == 1 and visited[x][y] == False:
+                myQueue.put((x, y))
+                visited[x][y] = True
 
     return numStudents
+
+
+def findStudents(groupMap, visited, i, j):
+    '''
+    groupMap(i, j)에 있는 학생과 같은 편인 학생의 수를 반환하고 visited에 True로 설정
+    '''
+    # return getStudentsByDFS(groupMap, visited, i, j)
+    return getStudentsByBFS(groupMap, visited, i, j)
 
 
 def getGroups(groupMap):
