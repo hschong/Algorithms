@@ -54,22 +54,93 @@ Picnic
 9
 
 '''
+import queue
 
 
-def getGroups(pMap):
+def isValid(groupMap, i, j):
     '''
-    유치원의 파벌 개수를 반환하는 함수를 작성하세요.
+    (i, j)가 유효한 좌표이면 True, 아니면 False를 리턴
     '''
 
-    return 0
+    length = len(groupMap)
+
+    if 0 <= i and i < length and 0 <= j and j < length:
+        return True
+    else:
+        return False
+
+
+def findStudents(groupMap, visited, i, j):
+    '''
+    groupMap(i, j)에 있는 학생과 같은 편인 학생의 수를 반환하고 visited에 True로 설정
+
+    Using BFS
+    1. Queue에다가 시작점을 enqueue, BFS 시작!
+    2. Queue에서 dequeue, 현재 내가 있는 위치
+    3. 내 위치에서 인접한 정점 중 방문하지 않은 점점을 모두 enqueu
+    4. goto 2. 로 돌아간다.
+
+    '''
+    myQueue = queue.Queue()
+    myQueue.put((i, j))
+
+    visited[i][j] = True
+    numStudents = 0
+
+    while not myQueue.empty():
+        current = myQueue.get()
+        numStudents += 1
+
+        i = current[0]
+        j = current[1]
+
+        # Above -> Left -> Right -> below
+        if isValid(groupMap, i-1, j) and groupMap[i-1][j] == 1 and visited[i-1][j] == False:
+            myQueue.put((i-1, j))
+            visited[i-1][j] = True
+
+        if isValid(groupMap, i, j-1) and groupMap[i][j-1] == 1 and visited[i][j-1] == False:
+            myQueue.put((i, j-1))
+            visited[i][j-1] = True
+
+        if isValid(groupMap, i, j+1) and groupMap[i][j+1] == 1 and visited[i][j+1] == False:
+            myQueue.put((i, j+1))
+            visited[i][j+1] = True
+
+        if isValid(groupMap, i+1, j) and groupMap[i+1][j] == 1 and visited[i+1][j] == False:
+            myQueue.put((i+1, j))
+            visited[i+1][j] = True
+
+    return numStudents
+
+
+def getGroups(groupMap):
+    '''
+    groupMap[i][j] : (i, j)의 데이터
+    '''
+
+    length = len(groupMap)
+    visited = [[False for j in range(length)] for i in range(length)]
+    result = []
+
+    for i in range(length):
+        for j in range(length):
+            if groupMap[i][j] == 1 and visited[i][j] == False:
+                numStudents = findStudents(groupMap, visited, i, j)  # 학생수
+                result.append(numStudents)
+
+    result.sort()
+    return (len(result), result)
 
 
 def read_input():
     size = int(input())
     returnMap = []
+
     for i in range(size):
         line = input()
         __line = []
+
         for j in range(len(line)):
             __line.append(int(line[j]))
 
@@ -78,8 +149,8 @@ def read_input():
 
 
 def main():
-    pMap = read_input()
-    print(getGroups(pMap))
+    groupMap = read_input()
+    print(getGroups(groupMap))
 
 
 if __name__ == "__main__":
