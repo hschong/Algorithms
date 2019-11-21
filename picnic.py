@@ -57,11 +57,12 @@ Picnic
 import queue
 
 
-def isValid(groupMap, i, j):
-    '''
-    (i, j)가 유효한 좌표이면 True, 아니면 False를 리턴
-    '''
+# Direction to find adjacent nodes: Above -> Left -> Right -> below
+# When the coordinate of the current node is [0][0],
+direction = [[-1, 0], [0, -1], [0, 1], [1, 0]]
 
+
+def isValid(groupMap, i, j):
     length = len(groupMap)
 
     if 0 <= i and i < length and 0 <= j and j < length:
@@ -70,26 +71,37 @@ def isValid(groupMap, i, j):
         return False
 
 
-def getStudentsByDFS(groupMap, visited, i, j):
+def getStudentsByDFS(groupMap, visited, i, j, numStudents):
+    visited[i][j] = True
+    numStudents += 1
 
-    return 0
+    '''
+    Find adjacent nodes from the current node.
+    x and y are the coordinate of the adjacent nodes. 
+    The coordinate of the current node is (i, j).
+    The coordinates of the adjacent node of the current node are (x, y)
+    '''
+    for x, y in direction:
+        x = i + x
+        y = j + y
+
+        if isValid(groupMap, x, y) and groupMap[x][y] == 1 and visited[x][y] == False:
+            numStudents = getStudentsByDFS(
+                groupMap, visited, x, y, numStudents)
+
+    return numStudents
 
 
-def getStudentsByBFS(groupMap, visited, i, j):
+def getStudentsByBFS(groupMap, visited, i, j, numStudents):
     '''
     1. Queue에다가 시작점을 enqueue, BFS 시작!
     2. Queue에서 dequeue, 현재 내가 있는 위치
     3. 내 위치에서 인접한 정점 중 방문하지 않은 점점을 모두 enqueu
     4. goto 2. 로 돌아간다.
     '''
-    numStudents = 0
     myQueue = queue.Queue()
-
     myQueue.put((i, j))
     visited[i][j] = True
-
-    # Above -> Left -> Right -> below
-    direction = [[-1, 0], [0, -1], [0, 1], [1, 0]]
 
     while not myQueue.empty():
         current = myQueue.get()
@@ -109,18 +121,15 @@ def getStudentsByBFS(groupMap, visited, i, j):
     return numStudents
 
 
-def findStudents(groupMap, visited, i, j):
-    '''
-    groupMap(i, j)에 있는 학생과 같은 편인 학생의 수를 반환하고 visited에 True로 설정
-    '''
-    # return getStudentsByDFS(groupMap, visited, i, j)
-    return getStudentsByBFS(groupMap, visited, i, j)
+# find the students belong to the same group and return the number of the students
+def findStudentsInGroup(groupMap, visited, i, j):
+    numStudents = 0
+    return getStudentsByDFS(groupMap, visited, i, j, numStudents)
+    # return getStudentsByBFS(groupMap, visited, i, j, numStudents)
 
 
 def getGroups(groupMap):
-    '''
-    groupMap[i][j] : (i, j)의 데이터
-    '''
+    # groupMap[i][j] : (i, j)의 데이터
 
     length = len(groupMap)
     visited = [[False for j in range(length)] for i in range(length)]
@@ -129,7 +138,8 @@ def getGroups(groupMap):
     for i in range(length):
         for j in range(length):
             if groupMap[i][j] == 1 and visited[i][j] == False:
-                numStudents = findStudents(groupMap, visited, i, j)  # 학생수
+                numStudents = findStudentsInGroup(
+                    groupMap, visited, i, j)  # 학생수
                 result.append(numStudents)
 
     result.sort()
