@@ -44,11 +44,6 @@ Graph
 '''
 
 import sys
-import hashlib
-import json
-import math
-import os
-import random
 sys.setrecursionlimit(100000)
 
 
@@ -78,7 +73,7 @@ def numFriends(numStudents, friendsList):
     graph = makeGraph(numStudents, friendsList)
     visited = [False for x in range(numStudents+1)]
 
-    return len(findFriends(graph, visited, 1))
+    return len(findFriends(graph, visited, 1)) - 1
 
 
 def main():
@@ -97,5 +92,5 @@ def main():
     print(numFriends(n_nodes, myInput))
 
 
-if __name__ == "_len(_main__":
+if __name__ == "__main__":
     main()
