@@ -58,13 +58,13 @@ def makeGraph(numStudents, friendsList):
     return graph
 
 
-def findFriends(graph, visited, start):
+def getFriends(graph, visited, start):
     friends = [start]
     visited[start] = True
 
     for e in graph[start]:
         if visited[e] == False:
-            friends += findFriends(graph, visited, e)
+            friends += getFriends(graph, visited, e)
 
     return friends
 
@@ -73,7 +73,7 @@ def numFriends(numStudents, friendsList):
     graph = makeGraph(numStudents, friendsList)
     visited = [False for x in range(numStudents+1)]
 
-    return len(findFriends(graph, visited, 1)) - 1
+    return len(getFriends(graph, visited, 1)) - 1
 
 
 def main():
