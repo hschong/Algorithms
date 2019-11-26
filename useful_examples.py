@@ -1,3 +1,4 @@
+import math
 
 mylist = []
 
@@ -46,3 +47,9 @@ def reverseString(x):
 
 mytxt = reverseString("I wonder how this text looks like backwards")
 print(mytxt)
+
+
+# Using infinity
+# import math
+INFINITY = math.inf
+NEGATIVE_INFINITY = -math.inf
