@@ -39,19 +39,19 @@ sys.setrecursionlimit(100000)
 def getShortest(graph, start, end):
     '''
     graph가 주어질 때, start부터 end까지의 최단거리를 반환하는 함수를 작성하세요.
-    1.  Table[i]: i 까지 오는데 걸리는 최단거리
+    1.  table[i]: i 까지 오는데 걸리는 최단거리
     2.  visited[i]: True or False
-    3.  Table에서 가장 작은 값 찾기
+    3.  table에서 가장 작은 값 찾기
     4.  확장
     5.  3번으로 노드의 수 만큼 반복
     '''
 
     n = len(graph)
 
-    Table = [INFINITY for i in range(n)]
+    table = [INFINITY for i in range(n)]
     visited = [False for i in range(n)]
 
-    Table[start] = 0  # distance from start to start
+    table[start] = 0  # distance from start to start
 
     for i in range(n):
         minDistance = INFINITY
@@ -59,8 +59,8 @@ def getShortest(graph, start, end):
 
         # 1.  최소값 찾기(단 방문 안한 node 중에서)
         for j in range(n):
-            if Table[j] < minDistance and visited[j] == False:
-                minDistance = Table[j]
+            if table[j] < minDistance and visited[j] == False:
+                minDistance = table[j]
                 currNode = j
 
         visited[currNode] = True
@@ -70,10 +70,10 @@ def getShortest(graph, start, end):
             nextNode = graph[currNode][j][0]
             nextCost = graph[currNode][j][1]
 
-            if Table[currNode] + nextCost < Table[nextNode]:
-                Table[nextNode] = Table[currNode] + nextCost
+            if table[currNode] + nextCost < table[nextNode]:
+                table[nextNode] = table[currNode] + nextCost
 
-    return Table[end]
+    return table[end]
 
 
 def main():
