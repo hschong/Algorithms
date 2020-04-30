@@ -1,5 +1,6 @@
 '''
-Write a function Add() that returns sum of two integers(variable x and y). The function should not use any of the arithmetic operators (+, ++, –, -, .. etc).
+Write a function add(x, y) that returns sum of two integers.
+The function should not use any of the arithmetic operators (+, ++, –, -, .. etc).
 x and y are greater than 0.
 
 x y   x ^ y    (x & y) << 1)    (x ^ y) ^ (x & y) << 1)
@@ -21,11 +22,11 @@ def add_using_while(x, y):
 
 
 def add(x, y):
-    if y != 0:
+    if y == 0:
+        return x
+    else:
         # add(sum of bits of x and y without carry, carry)
-        add(x ^ y, (x & y) << 1)
-
-    return x
+        return add(x ^ y, (x & y) << 1)
 
 
 '''
@@ -52,17 +53,37 @@ def subtract_using_while(x, y):
 
 
 def subtract(x, y):
-    if y != 0:
+    if y == 0:
+        return x
+    else:
         # subtract(subtraction of bits of x and y without borrow, borrow)
-        subtract(x ^ y, (((~x) & y) << 1))
+        return subtract(x ^ y, (((~x) & y) << 1))
 
-    return x
+
+'''
+Write a function swap(x, y) that does not use a temporary variable.
+'''
+
+
+def swap(x, y):
+    print('called swap({}, {})'.format(x, y))
+    x = x ^ y
+    y = x ^ y   # y = (x ^ y) ^ y, y = x
+    x = x ^ y   # x = (x ^ y) ^ x, x = y
+    print('x = {}, y = {}'.format(x, y))
 
 
 # Driver Code
-print(add(5, 2))
+x = 5
+y = 2
+sum = add(x, y)
+print('x = {}, y = {}, x + y = {}'.format(x, y, sum))
 
 x = 25
 y = 21
-print("x - y is ", subtract_using_while(x, y))
-print(bin(-3))
+print('x = {}, y = {}, x - y = {}'.format(x, y, subtract(x, y)))
+
+x = 3
+y = 5
+print('x = {}, y = {}'.format(x, y))
+swap(x, y)
