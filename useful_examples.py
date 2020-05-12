@@ -1,11 +1,17 @@
 import math
 
-mylist = []
+mylist = [1, 2, 5, 4, 7]
 
-# Sort the items.
-mylist.sort()  # Sort the items of the list in place.
+# Sort the items of the list in place.
+mylist.sort()
+
 # Return a new sorted list from the items in iterable.
-newList = sorted(mylist)
+newList = sorted(mylist, reverse=False)
+print(sorted([1, 3, 2, 5, 6, 4]))
+
+# Reverse a list
+newList.reverse()
+reversedList = list(reversed(newList))
 
 # Remove Duplicates From a List.
 mylist = ["a", "b", "a", "c", "c"]
@@ -34,7 +40,6 @@ for idx, val in enumerate(mylist):
     print(idx, val)
 
 # get the index of a given number
-print(mylist)
 if 'a' not in mylist:
     print(-1)
 else:
