@@ -46,11 +46,17 @@ else:
     print(mylist.index('a'))
 
 
-def reverseString(x):
-    return x[::-1]
+def reverse_string(x):
+    return x[-1::-1]
+    # return x[::-1]
+
+    # reversed_string = ''
+    # for i in range(len(x)-1, -1, -1):
+    #     reversed_string += x[i]
+    # return reversed_string
 
 
-mytxt = reverseString("I wonder how this text looks like backwards")
+mytxt = reverse_string("I wonder how this text looks like backwards")
 print(mytxt)
 
 
