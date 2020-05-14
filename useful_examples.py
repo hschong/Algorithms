@@ -1,64 +1,49 @@
 import math
 
-mylist = [1, 2, 5, 4, 7]
+my_list = [1, 2, 5, 4, 7]
 
 # Sort the items of the list in place.
-mylist.sort()
+my_list.sort()
 
 # Return a new sorted list from the items in iterable.
-newList = sorted(mylist, reverse=False)
+new_list = sorted(my_list, reverse=False)
 print(sorted([1, 3, 2, 5, 6, 4]))
 
 # Reverse a list
-newList.reverse()
-reversedList = list(reversed(newList))
+new_list.reverse()
+reversed_list = list(reversed(new_list))
 
 # Remove Duplicates From a List.
-mylist = ["a", "b", "a", "c", "c"]
-mylist = list(dict.fromkeys(mylist))
-print(mylist)
+my_list = ["a", "b", "a", "c", "c"]
+my_list = list(dict.fromkeys(my_list))
+print(my_list)
 
 # add/remove an object in a list.
-mylist.append('1')
-mylist.remove('1')
-mylist.reverse()
+my_list.append('1')
+my_list.remove('1')
+my_list.reverse()
 
 # remove all elements in list.
-mylist.clear()  # Python 3.3+
-del mylist[:]
-mylist[:] = []
-mylist *= 0
+my_list.clear()  # Python 3.3+
+del my_list[:]
+my_list[:] = []
+my_list *= 0
 
 # for in loop
-for item in mylist:
+for item in my_list:
     print(item)
 
-for index in range(len(mylist)):
-    print(mylist[index])
+for index in range(len(my_list)):
+    print(my_list[index])
 
-for idx, val in enumerate(mylist):
+for idx, val in enumerate(my_list):
     print(idx, val)
 
 # get the index of a given number
-if 'a' not in mylist:
+if 'a' not in my_list:
     print(-1)
 else:
-    print(mylist.index('a'))
-
-
-def reverse_string(string):
-    return string[-1::-1]  # return string[::-1]
-
-
-def reverse_string_using_loop(string):
-    reversed_string = ''
-    for i in range(len(string)-1, -1, -1):
-        reversed_string += string[i]
-    return reversed_string
-
-
-mytxt = reverse_string("I wonder how this text looks like backwards")
-print(mytxt)
+    print(my_list.index('a'))
 
 
 # Using infinity
