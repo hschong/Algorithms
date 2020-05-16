@@ -1,49 +1,64 @@
 import math
 
-my_list = [1, 2, 5, 4, 7]
+integers = [1, 2, 5, 4, 7]
 
 # Sort the items of the list in place.
-my_list.sort()
+integers.sort()
 
 # Return a new sorted list from the items in iterable.
-new_list = sorted(my_list, reverse=False)
+new_integers = sorted(integers, reverse=False)
 print(sorted([1, 3, 2, 5, 6, 4]))
 
 # Reverse a list
-new_list.reverse()
-reversed_list = list(reversed(new_list))
+new_integers.reverse()
+reversed_integers = list(reversed(new_integers))
+
+# Split a string into a list where each word is a list item:
+# setting the maxsplit parameter to 3, will return a list with 4 elements!
+txt = 'apple#banana#cherry#orange'
+x = txt.split("#", 3)
+print(x)
+
+# make a string into a list
+src_str = 'abc'
+print(list(src_str))
+
+# make a list into a string
+# convert a list of integers into a string list
+string = [str(integer) for integer in integers]
+print(''.join(string))
 
 # Remove Duplicates From a List.
-my_list = ["a", "b", "a", "c", "c"]
-my_list = list(dict.fromkeys(my_list))
-print(my_list)
+lst = ["a", "b", "a", "c", "c"]
+lst = list(dict.fromkeys(lst))
+print(lst)
 
 # add/remove an object in a list.
-my_list.append('1')
-my_list.remove('1')
-my_list.reverse()
+lst.append('1')
+lst.remove('1')
+lst.reverse()
 
 # remove all elements in list.
-my_list.clear()  # Python 3.3+
-del my_list[:]
-my_list[:] = []
-my_list *= 0
+lst.clear()  # Python 3.3+
+del lst[:]
+lst[:] = []
+lst *= 0
 
 # for in loop
-for item in my_list:
+for item in lst:
     print(item)
 
-for index in range(len(my_list)):
-    print(my_list[index])
+for index in range(len(lst)):
+    print(lst[index])
 
-for idx, val in enumerate(my_list):
+for idx, val in enumerate(lst):
     print(idx, val)
 
 # get the index of a given number
-if 'a' not in my_list:
+if 'a' not in lst:
     print(-1)
 else:
-    print(my_list.index('a'))
+    print(lst.index('a'))
 
 
 # Using infinity
