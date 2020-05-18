@@ -1,73 +1,68 @@
+# Fibonacci number
+# F0 = 0, F1= 1, Fn+2 = Fn + Fn+1
+
 INPUT_NUMBER = 9
 
 
-def kth_fibonacci_using_loop(kth):
-    # return kth fibonacci number
-    f1, f2 = 0, 1
-
-    if kth < 1:
-        print('kth must be greater than 0')
+def fibonacci_using_loop(n):  # return fn
+    if n < 0:
+        print('n must be greater than -1')
         return None
 
-    if kth == 1:    # f1
-        return 0
-    elif kth == 2:  # f2
-        return 1
+    if n == 0 or n == 1:
+        return n  # return f1 or f2
 
-    index = 3
-    while index <= kth:  # from f3 to fkth
-        fkth = f1 + f2
-        f1, f2 = f2, fkth
+    f0, f1 = 0, 1
+    index = 2
+    while index < n+1:  # from f2 to fn
+        fn = f0 + f1
+        f0, f1 = f1, fn
         index += 1
 
-    return fkth
+    return fn
 
 
-def list_fibonacci_using_loop(kth):
-    # return a list which has fib numbers from f1 to fn
+def list_fibonacci_using_loop(n):
+    # return a list which has fib numbers from f0 to fn
     fib_lst = []
-    f1, f2 = 0, 1
+    f0, f1 = 0, 1
 
-    if kth < 1:
-        print('input number must be greater than 0')
+    if n < 0:
+        print('input number must be greater than 0 or equal to 0')
         return None
-    elif kth == 1:
-        return list(f1)
-    elif kth == 2:
-        return list(f1) + list(f2)
+    elif n == 0:
+        fib_lst.append(f0)
     else:
+        fib_lst.append(f0)
         fib_lst.append(f1)
-        fib_lst.append(f2)
 
-    index = 3
-    while index < kth + 1:
-        fib_lst.append(f1 + f2)
-        f1, f2 = f2, f1 + f2
-        index += 1
+        index = 2
+        while index < n+1:  # from f2 to fn-1
+            fib_lst.append(f0 + f1)
+            f0, f1 = f1, f0 + f1
+            index += 1
 
     return fib_lst
 
 
-def kth_fibonacci_using_recursion(kth):
-    # return kth fibonacci number
-    if kth == 1:
-        return 0  # f1 = 0
-    elif kth == 2:
-        return 1  # f2 = 1
-    elif kth > 2:
-        return kth_fibonacci_using_recursion(kth-2) + kth_fibonacci_using_recursion(kth-1)
+def fibonacci_using_recursion(n):
+    # return fn
+    if n == 0 or n == 1:
+        return n  # return f0 or f1
+    elif n > 1:
+        return fibonacci_using_recursion(n-2) + fibonacci_using_recursion(n-1)
 
 
-def list_fibonacci_using_recursion(kth):
-    # return a list which has fib numbers from f1 to fn
+def list_fibonacci_using_recursion(n):
+    # return a list which has fib numbers from f0 to fn
     fib_lst = []
-    for i in range(1, kth+1):
-        fib_lst.append(kth_fibonacci_using_recursion(i))
+    for i in range(0, n+1):
+        fib_lst.append(fibonacci_using_recursion(i))
 
     return fib_lst
 
 
-print(kth_fibonacci_using_loop(INPUT_NUMBER))
-print(kth_fibonacci_using_recursion(INPUT_NUMBER))
+print(fibonacci_using_loop(INPUT_NUMBER))
 print(list_fibonacci_using_loop(INPUT_NUMBER))
+print(fibonacci_using_recursion(INPUT_NUMBER))
 print(list_fibonacci_using_recursion(INPUT_NUMBER))
