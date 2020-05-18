@@ -2,6 +2,7 @@
 # F0 = 0, F1= 1, Fn+2 = Fn + Fn+1
 
 INPUT_NUMBER = 9
+MAX_MEMOIZATION = 1000
 
 
 def fibonacci_using_loop(n):  # return fn
@@ -20,6 +21,9 @@ def fibonacci_using_loop(n):  # return fn
         index += 1
 
     return fn
+
+
+print(fibonacci_using_loop(INPUT_NUMBER))
 
 
 def list_fibonacci_using_loop(n):
@@ -45,12 +49,15 @@ def list_fibonacci_using_loop(n):
     return fib_lst
 
 
+print(list_fibonacci_using_loop(INPUT_NUMBER))
+
+
 def fibonacci_using_recursion(n):
     # return fn
-    if n == 0 or n == 1:
-        return n  # return f0 or f1
-    elif n > 1:
-        return fibonacci_using_recursion(n-2) + fibonacci_using_recursion(n-1)
+    return n if n < 2 else fibonacci_using_recursion(n-2) + fibonacci_using_recursion(n-1)
+
+
+print(fibonacci_using_recursion(INPUT_NUMBER))
 
 
 def list_fibonacci_using_recursion(n):
@@ -62,7 +69,23 @@ def list_fibonacci_using_recursion(n):
     return fib_lst
 
 
-print(fibonacci_using_loop(INPUT_NUMBER))
-print(list_fibonacci_using_loop(INPUT_NUMBER))
-print(fibonacci_using_recursion(INPUT_NUMBER))
 print(list_fibonacci_using_recursion(INPUT_NUMBER))
+
+
+def fibonacci_using_memoization(n):
+    if n in dic_fibo:
+        return dic_fibo[n]
+
+    if n < 2:
+        dic_fibo[n] = n
+    else:
+        dic_fibo[n] = fibonacci_using_memoization(
+            n-2) + fibonacci_using_memoization(n-1)
+
+    return dic_fibo[n]
+
+
+dic_fibo = {}
+print(fibonacci_using_memoization(INPUT_NUMBER))
+for i in sorted(dic_fibo):
+    print(i, ':', dic_fibo[i])
