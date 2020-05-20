@@ -8,8 +8,11 @@ def power(base, expo):
 
 
 def power_using_recursion(base, expo):
-    return 1 if expo == 0 else base * power_using_recursion(base, expo - 1)
+    if expo == 0:
+        return 1
+
+    return power_using_recursion(base, expo - 1) * base if expo > 0 else power_using_recursion(base, expo + 1) / base
 
 
 print(power(2, 10))
-print(power_using_recursion(2, 10))
+print(power_using_recursion(2, -3))
