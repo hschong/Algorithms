@@ -3,15 +3,17 @@ class LinkedListElement:
         self.value = None
         self.next = None
 
+
 class LinkedListPipe:
     def __init__(self):
         self.startElement = None
         self.endElement = None
 
     def addLeft(self, number):
+        # Add operation: O(n)
         newElement = LinkedListElement()
         newElement.value = number
-        
+
         if self.startElement == None:
             self.startElement = newElement
             self.endElement = newElement
@@ -38,7 +40,7 @@ class LinkedListPipe:
         while c != None:
             result.append(c.value)
             c = c.next
-        
+
         return result
 
 
@@ -59,7 +61,7 @@ def processBeads(myInput):
 
     myPipe = LinkedListPipe()
     result = []
-    
+
     for ball in myInput:
         if ball[1] == 0:
             myPipe.addLeft(ball[0])
@@ -74,7 +76,7 @@ def main():
     n = int(input())
     myList = []
 
-    for i in range(n) :
+    for i in range(n):
         myList.append([int(v) for v in input().split()])
 
     print(*processBeads(myList))

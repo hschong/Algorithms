@@ -1,12 +1,13 @@
 class ListPipe:
     def __init__(self):
         self.pipe = []
-    
+
     def addLeft(self, number):
-        self.pipe = [number] + self.pipe 
-        # 1+2+3+4+5+6+ ... + n = n(n+1)/2
+        # Add operation: 1+2+3+4+5+6+ ... + n = n(n+1)/2, O(n**2)
+        self.pipe = [number] + self.pipe
 
     def addRight(self, number):
+        # 1+1+1 + ... + 1 = n, O(n)
         self.pipe.append(number)
 
     def getBeads(self):
@@ -43,10 +44,11 @@ def main():
     n = int(input())
     myList = []
 
-    for i in range(n) :
+    for i in range(n):
         myList.append([int(v) for v in input().split()])
 
     print(*processBeads(myList))
+
 
 if __name__ == "__main__":
     main()
