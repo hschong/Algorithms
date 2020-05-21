@@ -1,103 +1,83 @@
-class LinkedListElement:
+class DLL_Element:
     def __init__(self, data, prev, next):
         self.data = data
         self.next = next
         self.prev = prev
 
 
-class OrderManger:
+class Order:
     def __init__(self):
+        # Using dictionary(hash) for a better searching.
         self.start = None
         self.end = None
+        self.order_dict = {}
 
-        # Using dictionary(hash) for a better searching.
-        self.orderHash = {}
-
-    # targetOrder <--> (newOrder) <--> targetOrder.next
-    def addOrderAfter(self, newID, targetID):
-        targetOrder = self.orderHash[targetID]
-        newOrder = LinkedListElement(newID, targetOrder, targetOrder.next)
-
-        targetOrder.next.prev = newOrder
-        targetOrder.next = newOrder
-
-        self.orderHash[newID] = newOrder
-
-    # targetOrder.prev <--> (newOrder) <--> targetOrder
-    def addOrderBefore(self, newID, targetID):
-        targetOrder = self.orderHash[targetID]
-        newOrder = LinkedListElement(newID, targetOrder.prev, targetOrder)
-
-        targetOrder.prev.next = newOrder
-        targetOrder.prev = newOrder
-
-        self.orderHash[newID] = newOrder
-
-    # Add an order after the self.end.
-    def appendOrder(self, orderID):
-        newOrder = LinkedListElement(orderID, None, None)
-
-        if self.begin == None:
-            self.begin = newOrder
-            self.end = newOrder
-        else:
-            self.end.next = newOrder
-            newOrder.prev = self.end
-            self.end = newOrder
-
-        self.orderHash[orderID] = newOrder
-
-    def removeOrder(self, orderID):
-        order = self.orderHash[orderID]
-
-        if order is None:
+    def order(self, id, data):
+        if id in self.order_dict:
+            print('The order for the id you entered already exists.')
             return False
 
+        new_order = DLL_Element(data, None, None)
+        self.order_dict[id] = new_order
+
+        if self.start == None:
+            self.start = new_order
+            self.end = new_order
         else:
-            prevOrder = order.prev
-            nextOrder = order.next
+            self.end.next = new_order
+            new_order.prev = self.end
+            self.end = new_order
 
-            if prevOrder != None:
-                prevOrder.next = order.next
+    def remove_order(self, id):
+        if id not in self.order_dict:  # Zero order in dict
+            print('Not found with id')
+            return None
+        else:
+            order = self.order_dict[id]
+            if order == self.start and order == self.end:
+                # only 1 order in dict
+                self.start = None
+                self.end = None
 
-            if nextOrder != None:
-                nextOrder.prev = order.prev
-
-            if order is self.begin:
-                self.begin = nextOrder
-
-            if order is self.end:
-                self.end = prevOrder
-
-            del self.orderHash[orderID]
-            return True
-
-    # Order prioity
-    def getOrder(self, orderId):
-        count = 1
-        current = self.begin
-
-        while current != None:
-            if orderId == current.data:
-                return count
+            # orders in dict >= 2
+            if order == self.start:
+                self.start = order.next
+                order.next.prev = None
+            elif order == self.end:
+                self.end = order.prev
             else:
-                count += 1
-                current = current.next
+                order.prev.next = order.next
+                order.next.prev = order.prev
 
-        return -1
+            del self.order_dict[id]
+
+    def get_order(self, id):
+        if id not in self.order_dict:
+            print('id {} is invalid'.format(id))
+            return None
+        else:
+            return self.order_dict[id]
+
+    def print_details(self, order):
+        if order != None:
+            print(order.data)
 
 
 def main():
-    manager = OrderManger()
+    manager = Order()
 
-    manager.appendOrder(1)
-    manager.appendOrder(2)
-    manager.appendOrder(3)
-    manager.removeOrder(2)
+    manager.order(1, 'abc')
+    manager.order(2, '가나다')
+    manager.order(3, '123')
+    manager.order(2, '!@#')
 
-    print(manager.getOrder(1))
-    print(manager.getOrder(2))
-    print(manager.getOrder(3))
+    manager.print_details(manager.get_order(1))
+    manager.print_details(manager.get_order(2))
+    manager.print_details(manager.get_order(3))
+    manager.remove_order(1)
+    manager.print_details(manager.get_order(1))
+    manager.print_details(manager.get_order(2))
+    manager.print_details(manager.get_order(3))
 
 
 if __name__ == "__main__":
