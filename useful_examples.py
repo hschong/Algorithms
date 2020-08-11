@@ -60,6 +60,10 @@ if 'a' not in lst:
 else:
     print(lst.index('a'))
 
+# Lambda
+def add(a, b): return a+b
+# add = lambda a, b: a+b
+
 
 # Using infinity
 # import math
