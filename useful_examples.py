@@ -1,71 +1,84 @@
 import math
 
-integers = [1, 2, 5, 4, 7]
-
-# Sort the items of the list in place.
-integers.sort()
-
-# Return a new sorted list from the items in iterable.
-new_integers = sorted(integers, reverse=False)
-print(sorted([1, 3, 2, 5, 6, 4]))
-
-# Reverse a list
-new_integers.reverse()
-reversed_integers = list(reversed(new_integers))
-
-# Split a string into a list where each word is a list item:
-# setting the maxsplit parameter to 3, will return a list with 4 elements!
-txt = 'apple#banana#cherry#orange'
-x = txt.split("#", 3)
-print(x)
-
-# make a string into a list
-src_str = 'abc'
-print(list(src_str))
-
-# make a list into a string
-# convert a list of integers into a string list
-string = [str(integer) for integer in integers]
-print(''.join(string))
-
-# Remove Duplicates From a List.
-lst = ["a", "b", "a", "c", "c"]
-lst = list(dict.fromkeys(lst))
-print(lst)
-
-# add/remove an object in a list.
-lst.append('1')
-lst.remove('1')
-lst.reverse()
-
-# remove all elements in list.
-lst.clear()  # Python 3.3+
-del lst[:]
-lst[:] = []
-lst *= 0
-
-# for in loop
-for item in lst:
-    print(item)
-
-for index in range(len(lst)):
-    print(lst[index])
-
-for idx, val in enumerate(lst):
-    print(idx, val)
-
-# get the index of a given number
-if 'a' not in lst:
-    print(-1)
-else:
-    print(lst.index('a'))
-
-# Lambda
-def add(a, b): return a+b
-# add = lambda a, b: a+b
-
-
 # Using infinity
 # import math
 INFINITY = math.inf
 NEGATIVE_INFINITY = -math.inf
+
+integers = [1, 2, 5, 4, 7, 3]
+characters = ['u', 'a', 'e', 'c', 'k', 'i']
+duplicates = ['a', 'b', 'a', 'c', 'c']
+string = 'apple#banana#cherry#orange'
+languages = ['Korean']
+languages_tuple = ('English', 'German')
+
+# Sort the items of the list in place.
+integers.sort()
+integers.sort(reverse=True)
+
+# Return a new sorted list from the items in iterable.
+sorted_characters = sorted(characters)
+sorted_characters = sorted(characters, reverse=True)
+
+# Split a string into lists
+# Setting the maxsplit parameter to 3, will return a list with 4
+new_list = string.split('#', 3)
+
+# Convert a string to a list
+new_list = list(string)
+
+# Convert a list to a string
+new_string = ''.join(new_list)
+
+# Reverse a list
+integers.reverse()
+# reversed() returns a reverse iterator
+new_integers = list(reversed(integers))
+
+# Remove duplicates from a list
+new_list = list(dict.fromkeys(duplicates))
+
+# Append/Insert an object in a list
+new_list.append(1)
+new_list.insert(0, 1)
+new_list.remove(1)
+
+# Remove and return item at index (default last)
+last_item = new_list.pop()
+item_at_1 = new_list.pop(1)
+
+# Return first index of value from list
+if 'a' not in new_list:
+    print('a is not in the list.')
+else:
+    index = new_list.index('a')
+
+# Remove all items from list
+new_list.clear()
+del new_list[:]
+new_list = []
+new_list[:] = []
+new_list *= 0
+
+# new_list = new_list[:1] + new_list[1:]
+new_list[1:] = []
+
+occurrences = new_list.count('a')
+languages.extend(languages_tuple)
+
+for idx, val in enumerate(new_list):
+    print(idx, val)
+
+
+# Lambda
+def calculate(a, b, func):
+    return func(a, b)
+
+
+# add = lambda a, b: a+b
+def add(a, b): return a+b
+
+# judge = lambda score: 'pass' if score>=80 else 'fail'
+
+
+def judge(score): return 'pass' if score >= 80 else 'fail'
