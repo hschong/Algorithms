@@ -1,26 +1,33 @@
-# simple merge sort
-def simple_merge_sort(lst):
-    result = []
+from collections import deque
+from typing import List
+from typing import Deque
+import itertools
+
+
+def simple_merge_sort(lst: Deque[int]) -> Deque[int]:
+    result = deque()
     length = len(lst)
     mid = length // 2
 
     if length < 2:
         return lst
 
-    small_group = simple_merge_sort(lst[:mid])
-    large_group = simple_merge_sort(lst[mid:])
+    small_group = deque(itertools.islice(lst, 0, mid))
+    large_group = deque(itertools.islice(lst, mid, len(lst)))
+    small_group = simple_merge_sort(small_group)
+    large_group = simple_merge_sort(large_group)
 
     while small_group and large_group:
         if small_group[0] < large_group[0]:
-            result.append(small_group.pop(0))
+            result.append(small_group.popleft())
         else:
-            result.append(large_group.pop(0))
+            result.append(large_group.popleft())
 
     while small_group:
-        result.append(small_group.pop(0))
+        result.append(small_group.popleft())
 
     while large_group:
-        result.append(large_group.pop(0))
+        result.append(large_group.popleft())
 
     return result
 
@@ -62,5 +69,5 @@ def merge(left_nums, right_nums):
 
 
 lst = [6, 8, 3, 9, 10, 1, 2, 4, 7, 5]
-print(simple_merge_sort(lst))
+print(list(simple_merge_sort(lst)))
 print(merge_sort(lst))
