@@ -1,4 +1,4 @@
-class LinkedListElement:
+class Node:
     def __init__(self):
         self.value = None
         self.next = None
@@ -6,63 +6,62 @@ class LinkedListElement:
 
 class LinkedListPipe:
     def __init__(self):
-        self.startElement = None
-        self.endElement = None
+        self.start = None
+        self.end = None
 
-    def addLeft(self, number):
-        # Add operation: O(n)
-        newElement = LinkedListElement()
-        newElement.value = number
+    def addLeft(self, value):  # Add operation: O(n**2)
+        node = Node()
+        node.value = value
 
-        if self.startElement == None:
-            self.startElement = newElement
-            self.endElement = newElement
+        if self.start == None:
+            self.start = node
+            self.end = node
         else:
-            newElement.next = self.startElement
-            self.startElement = newElement
+            node.next = self.start
+            self.start = node
 
-    def addRight(self, number):
-        newElement = LinkedListElement()
-        newElement.value = number
+    def addRight(self, value):  # Add operation: O(n)
+        node = Node()
+        node.value = value
 
-        if self.startElement == None:
-            self.startElement = newElement
-            self.endElement = newElement
+        if self.start == None:
+            self.start = node
+            self.end = node
         else:
-            self.endElement.next = newElement
-            self.endElement = newElement
+            self.end.next = node
+            self.end = node
 
     # Converting the pipe into the list, and returning the list.
     def getBeads(self):
-        c = self.startElement
+        node = self.start
         result = []
 
-        while c != None:
-            result.append(c.value)
-            c = c.next
+        while node != None:
+            result.append(node.value)
+            node = node.next
 
         return result
 
 
-def processBeads(myInput):
+def processBeads(my_input):
     '''
-    myInput[i][0] : Elements' index
-    myInput[i][1] : Direction to add, 0 : left, 1 : right
+    my_input[i][0] : Elements' index
+    my_input[i][1] : Direction to add, 0 : left, 1 : right
 
-    myInput[0][0] = 1, myInput[0][1] = 0,
-    myInput[1][0] = 2, myInput[1][1] = 1,
-    myInput[2][0] = 3, myInput[2][1] = 0
+    my_input[0][0] = 1, my_input[0][1] = 0,
+    my_input[1][0] = 2, my_input[1][1] = 1,
+    my_input[2][0] = 3, my_input[2][1] = 0
 
-    myInput[0] = ball = [1, 0]
-    myInput[1] = ball = [2, 1]
-    myInput[2] = ball = [3, 0]
+    my_input[0] = ball = [1, 0]
+    my_input[1] = ball = [2, 1]
+    my_input[2] = ball = [3, 0]
     [[1,0], [2,1], [3,0]]
     '''
 
     myPipe = LinkedListPipe()
     result = []
 
-    for ball in myInput:
+    for ball in my_input:
         if ball[1] == 0:
             myPipe.addLeft(ball[0])
         else:
@@ -76,7 +75,7 @@ def main():
     n = int(input())
     myList = []
 
-    for i in range(n):
+    for _ in range(n):
         myList.append([int(v) for v in input().split()])
 
     print(*processBeads(myList))
